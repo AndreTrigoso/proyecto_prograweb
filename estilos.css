@@ -1,0 +1,319 @@
+:root {
+    --primary: #e9880a;
+    font-family: 'Inter', sans-serif;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-size: 15px;
+    line-height: 22px;
+    background-color: white;
+}
+
+h1 {
+    font-size: 48px;
+    line-height: 56px;
+    font-weight: 600;
+    margin: 0;
+}
+
+h2 {
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: 600;
+    margin: 0;
+}
+
+h3 {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    margin: 0;
+}
+
+h4 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+
+.contenedor {
+    max-width: 1200px;
+    margin: 0;
+    padding: 0 24px;
+}
+
+.ayuda {
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.boton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding:  24px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.boton-primario {
+    background-color: var(--primary);
+    color: white;
+}
+
+.boton-primario:hover {
+    background-color: black;
+}
+
+.boton-secundario {
+    background-color: transparent;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+
+
+
+.cabecera {
+    background-color: whitesmoke;
+}
+
+.cabecera-contenido {
+    display: flex;
+    align-items: center;
+    height: 72px;
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.enlaces {
+    display: flex;
+    gap: 32px;
+    margin-left: 48px;
+    font-weight: 600;
+}
+
+.enlaces a:hover {
+    color: var(--primary);
+}
+
+.acciones {
+    display: flex;
+    gap: 12px;
+}
+
+/* Banner */
+.banner-contenido {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.banner-texto {
+    flex: 1;
+}
+
+.banner-texto p {
+    font-size: 18px;
+    line-height: 28px;
+    margin: 24px 0 32px;
+    max-width: 480px;
+}
+
+.banner-imagen {
+    flex: 1;
+}
+
+.banner-imagen img {
+    display: block;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+/* Secciones */
+.seccion {
+    padding: 80px 0;
+}
+
+.subtitulo {
+    margin-top: 8px;
+}
+
+/* Tarjetas de locales */
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.tarjeta {
+    background-color: whitesmoke;
+    border: 1px solid whitesmoke;
+    border-radius: 16px;
+    box-shadow: black;
+}
+
+.tarjeta img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: whitesmoke;
+}
+
+.tarjeta-cuerpo {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.tarjeta-cuerpo h3 {
+    margin-top: 8px;
+}
+
+.tarjeta-cuerpo .boton {
+    margin-top: 16px;
+}
+
+.badge {
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.badge-abierto {
+    background-color: whitesmoke;
+    color: #3F7320;
+}
+
+.badge-cerrado {
+    background-color: whitesmoke;
+}
+
+/* Pasos */
+.pasos {
+    display: grid;
+    gap: 32px;
+    margin-top: 32px;
+}
+
+.paso {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.paso-numero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background-color: var(--primary);
+    color: white;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.paso p {
+    color: black;
+}
+
+/* Llamada a la acción */
+.cta {
+    color: white;
+    padding: 56px 0;
+}
+
+.cta-contenido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.cta p {
+    margin-top: 8px;
+    color: whitesmoke;
+}
+
+/* Pie */
+.pie {
+    background-color: #1C110D;
+    color: whitesmoke;
+}
+
+.pie-contenido {
+    display: grid;
+    gap: 48px;
+    padding-top: 56px;
+    padding-bottom: 56px;
+}
+
+.logo-claro {
+    color: white;
+}
+
+.pie-columna p {
+    margin-top: 12px;
+    max-width: 320px;
+    color: black;
+}
+
+.pie-columna h4 {
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 16px;
+}
+
+.pie-columna ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pie-columna a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.pie-inferior {
+    border-top: 1px solid #3A2A24;
+    padding: 20px 0;
+    font-size: 13px;
+    color: black;
+}
