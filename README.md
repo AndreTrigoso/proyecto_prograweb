@@ -5,7 +5,7 @@
 
 ---
 
-##Estado de los Prerrequisitos del Proyecto (Sección 9 del PDF)
+## Estado de los Prerrequisitos del Proyecto (Sección 9 del PDF)
 
 Conforme a lo especificado en la sección **"Cómo evitar bloquearse entre ustedes"** del documento oficial de especificaciones y en los **Mockups de Alta Fidelidad**, se han establecido todos los prerrequisitos:
 
@@ -42,7 +42,7 @@ Conforme a lo especificado en la sección **"Cómo evitar bloquearse entre usted
 
 ---
 
-##Cómo Ejecutar el Proyecto Localmente
+## Cómo Ejecutar el Proyecto Localmente
 
 ### 1. Clonar el repositorio y acceder a la carpeta:
 ```bash
@@ -68,7 +68,7 @@ npm run build
 
 ---
 
-##Historias de Usuario Asignadas por Integrante
+## Historias de Usuario Asignadas por Integrante
 
 | Historia | Rol | Alcance | Responsable |
 | :--- | :--- | :--- | :--- |
