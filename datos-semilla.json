@@ -1,0 +1,1104 @@
+{
+  "usuarios": [
+    {
+      "id": "usr-mateo",
+      "rol": "comensal",
+      "correo": "mateo.rojas@aloe.ulima.edu.pe",
+      "contrasenaHash": "$2a$12$dummyhashmateo1234567890",
+      "telefono": "987 654 321",
+      "nombres": "Mateo",
+      "apellidos": "Rojas Ibáñez",
+      "pedidosTotales": 24,
+      "pedidosNoRecogidos": 0,
+      "localId": null,
+      "estadoCuenta": "activo",
+      "motivoBloqueo": null,
+      "fechaRegistro": "2026-03-01T10:00:00Z"
+    },
+    {
+      "id": "usr-renzo",
+      "rol": "comensal",
+      "correo": "renzo.vilchez@aloe.ulima.edu.pe",
+      "contrasenaHash": "$2a$12$dummyhashrenzo1234567890",
+      "telefono": "981 234 567",
+      "nombres": "Renzo",
+      "apellidos": "Vílchez Paredes",
+      "pedidosTotales": 15,
+      "pedidosNoRecogidos": 0,
+      "localId": null,
+      "estadoCuenta": "activo",
+      "motivoBloqueo": null,
+      "fechaRegistro": "2026-03-05T14:20:00Z"
+    },
+    {
+      "id": "usr-andrea",
+      "rol": "comensal",
+      "correo": "andrea.nunez@aloe.ulima.edu.pe",
+      "contrasenaHash": "$2a$12$dummyhashandrea12345678",
+      "telefono": "992 345 678",
+      "nombres": "Andrea",
+      "apellidos": "Núñez Lozano",
+      "pedidosTotales": 11,
+      "pedidosNoRecogidos": 0,
+      "localId": null,
+      "estadoCuenta": "activo",
+      "motivoBloqueo": null,
+      "fechaRegistro": "2026-03-10T11:00:00Z"
+    },
+    {
+      "id": "usr-carlos",
+      "rol": "comensal",
+      "correo": "carlos.mendoza@aloe.ulima.edu.pe",
+      "contrasenaHash": "$2a$12$dummyhashcarlos12345678",
+      "telefono": "976 543 210",
+      "nombres": "Carlos",
+      "apellidos": "Mendoza",
+      "pedidosTotales": 6,
+      "pedidosNoRecogidos": 2,
+      "localId": null,
+      "estadoCuenta": "bloqueado",
+      "motivoBloqueo": "Incumplimiento reiterado de recojo de pedidos sin previo aviso.",
+      "fechaRegistro": "2026-02-15T09:12:00Z"
+    },
+    {
+      "id": "usr-local-central",
+      "rol": "local",
+      "correo": "contacto@cafeteriacentral.pe",
+      "contrasenaHash": "$2a$12$dummyhashcentral12345678",
+      "telefono": "944 332 211",
+      "nombres": "Encargado",
+      "apellidos": "Cafetería Central",
+      "localId": "loc-central",
+      "estadoCuenta": "activo",
+      "motivoBloqueo": null,
+      "fechaRegistro": "2026-01-10T08:00:00Z"
+    },
+    {
+      "id": "usr-local-jardin",
+      "rol": "local",
+      "correo": "contacto@cafedeljardin.pe",
+      "contrasenaHash": "$2a$12$dummyhashjardin12345678",
+      "telefono": "933 221 100",
+      "nombres": "Administrador",
+      "apellidos": "Café del Jardín",
+      "localId": "loc-jardin",
+      "estadoCuenta": "activo",
+      "motivoBloqueo": null,
+      "fechaRegistro": "2026-01-12T08:00:00Z"
+    },
+    {
+      "id": "usr-admin",
+      "rol": "administrador",
+      "correo": "admin@ulima.edu.pe",
+      "contrasenaHash": "$2a$12$dummyhashadmin1234567890",
+      "telefono": "999 888 777",
+      "nombres": "Ana",
+      "apellidos": "García",
+      "localId": null,
+      "estadoCuenta": "activo",
+      "motivoBloqueo": null,
+      "fechaRegistro": "2026-01-01T00:00:00Z"
+    }
+  ],
+  "locales": [
+    {
+      "id": "loc-central",
+      "nombreComercial": "Cafetería Central",
+      "ruc": "20100123451",
+      "sede": "Monterrico",
+      "ubicacionCampus": "Edificio F2 · piso 1",
+      "correo": "central@cafeteriasulima.pe",
+      "telefono": "4376767 anexo 3201",
+      "descripcion": "La cafetería más grande del campus. Variedad de almuerzos ejecutivos, sándwiches calientes, bollería y café de especialidad.",
+      "logotipo": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=160&auto=format&fit=crop&q=80",
+      "fotografias": [
+        "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&auto=format&fit=crop&q=80"
+      ],
+      "tiempoEstimadoMin": 15,
+      "estado": "abierto",
+      "motivoSuspension": null,
+      "calificacionPromedio": 4.6,
+      "totalCalificaciones": 128,
+      "horarioAtencion": [
+        { "dia": "lunes", "abierto": true, "horaApertura": "07:30", "horaCierre": "19:00" },
+        { "dia": "martes", "abierto": true, "horaApertura": "07:30", "horaCierre": "19:00" },
+        { "dia": "miercoles", "abierto": true, "horaApertura": "07:30", "horaCierre": "19:00" },
+        { "dia": "jueves", "abierto": true, "horaApertura": "07:30", "horaCierre": "19:00" },
+        { "dia": "viernes", "abierto": true, "horaApertura": "07:30", "horaCierre": "19:00" },
+        { "dia": "sabado", "abierto": true, "horaApertura": "08:00", "horaCierre": "13:00" },
+        { "dia": "domingo", "abierto": false, "horaApertura": "08:00", "horaCierre": "13:00" }
+      ]
+    },
+    {
+      "id": "loc-jardin",
+      "nombreComercial": "Café del Jardín",
+      "ruc": "20509876542",
+      "sede": "Monterrico",
+      "ubicacionCampus": "Atrás del pabellón N · jardín",
+      "correo": "jardin@cafeteriasulima.pe",
+      "telefono": "4376767 anexo 3205",
+      "descripcion": "Ambiente al aire libre frente a las áreas verdes. Especialistas en postres artesanales, jugos recién exprimidos y wraps ligeros.",
+      "logotipo": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=160&auto=format&fit=crop&q=80",
+      "fotografias": [
+        "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&auto=format&fit=crop&q=80"
+      ],
+      "tiempoEstimadoMin": 10,
+      "estado": "abierto",
+      "motivoSuspension": null,
+      "calificacionPromedio": 4.8,
+      "totalCalificaciones": 94,
+      "horarioAtencion": [
+        { "dia": "lunes", "abierto": true, "horaApertura": "08:00", "horaCierre": "18:00" },
+        { "dia": "martes", "abierto": true, "horaApertura": "08:00", "horaCierre": "18:00" },
+        { "dia": "miercoles", "abierto": true, "horaApertura": "08:00", "horaCierre": "18:00" },
+        { "dia": "jueves", "abierto": true, "horaApertura": "08:00", "horaCierre": "18:00" },
+        { "dia": "viernes", "abierto": true, "horaApertura": "08:00", "horaCierre": "17:00" },
+        { "dia": "sabado", "abierto": false, "horaApertura": "08:00", "horaCierre": "13:00" },
+        { "dia": "domingo", "abierto": false, "horaApertura": "08:00", "horaCierre": "13:00" }
+      ]
+    },
+    {
+      "id": "loc-ingenieria",
+      "nombreComercial": "Kiosco Ingeniería",
+      "ruc": "20601234981",
+      "sede": "Monterrico",
+      "ubicacionCampus": "Edificio O2 · piso -1",
+      "correo": "kiosco.ing@cafeteriasulima.pe",
+      "telefono": "4376767 anexo 3208",
+      "descripcion": "Snacks rápidos, bebidas energizantes, cafés calientes y empanadas express entre horas de laboratorio.",
+      "logotipo": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=160&auto=format&fit=crop&q=80",
+      "fotografias": [
+        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&auto=format&fit=crop&q=80"
+      ],
+      "tiempoEstimadoMin": 5,
+      "estado": "cerrado",
+      "motivoSuspension": null,
+      "calificacionPromedio": 4.2,
+      "totalCalificaciones": 47,
+      "horarioAtencion": [
+        { "dia": "lunes", "abierto": true, "horaApertura": "08:00", "horaCierre": "17:00" },
+        { "dia": "martes", "abierto": true, "horaApertura": "08:00", "horaCierre": "17:00" },
+        { "dia": "miercoles", "abierto": true, "horaApertura": "08:00", "horaCierre": "17:00" },
+        { "dia": "jueves", "abierto": true, "horaApertura": "08:00", "horaCierre": "17:00" },
+        { "dia": "viernes", "abierto": true, "horaApertura": "08:00", "horaCierre": "16:00" },
+        { "dia": "sabado", "abierto": false, "horaApertura": "08:00", "horaCierre": "13:00" },
+        { "dia": "domingo", "abierto": false, "horaApertura": "08:00", "horaCierre": "13:00" }
+      ]
+    },
+    {
+      "id": "loc-pergola",
+      "nombreComercial": "La Pérgola Snacks",
+      "ruc": "20448899001",
+      "sede": "Monterrico",
+      "ubicacionCampus": "Edificio V · piso 1",
+      "correo": "pergola@cafeteriasulima.pe",
+      "telefono": "4376767 anexo 3211",
+      "descripcion": "Cafetería con terraza para estudio grupal.",
+      "logotipo": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=160&auto=format&fit=crop&q=80",
+      "fotografias": [
+        "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&auto=format&fit=crop&q=80"
+      ],
+      "tiempoEstimadoMin": 12,
+      "estado": "suspendido",
+      "motivoSuspension": "Recepción de pedidos suspendida por mantenimiento de cafeteras.",
+      "calificacionPromedio": 4.4,
+      "totalCalificaciones": 36,
+      "horarioAtencion": [
+        { "dia": "lunes", "abierto": true, "horaApertura": "08:30", "horaCierre": "17:30" },
+        { "dia": "martes", "abierto": true, "horaApertura": "08:30", "horaCierre": "17:30" },
+        { "dia": "miercoles", "abierto": true, "horaApertura": "08:30", "horaCierre": "17:30" },
+        { "dia": "jueves", "abierto": true, "horaApertura": "08:30", "horaCierre": "17:30" },
+        { "dia": "viernes", "abierto": true, "horaApertura": "08:30", "horaCierre": "17:30" },
+        { "dia": "sabado", "abierto": false, "horaApertura": "08:00", "horaCierre": "13:00" },
+        { "dia": "domingo", "abierto": false, "horaApertura": "08:00", "horaCierre": "13:00" }
+      ]
+    }
+  ],
+  "categorias": [
+    { "id": "cat-cafes", "localId": "loc-central", "nombre": "Café y Bebidas calientes", "orden": 1 },
+    { "id": "cat-sandwiches", "localId": "loc-central", "nombre": "Sándwiches y Empanadas", "orden": 2 },
+    { "id": "cat-almuerzos", "localId": "loc-central", "nombre": "Menús y Almuerzos", "orden": 3 },
+    { "id": "cat-postres", "localId": "loc-central", "nombre": "Postres y Pastelería", "orden": 4 },
+    { "id": "cat-jardin-cafes", "localId": "loc-jardin", "nombre": "Bebidas de autor", "orden": 1 },
+    { "id": "cat-jardin-saludable", "localId": "loc-jardin", "nombre": "Bowls y Saludables", "orden": 2 },
+    { "id": "cat-jardin-postres", "localId": "loc-jardin", "nombre": "Tortas y Bocaditos", "orden": 3 }
+  ],
+  "productos": [
+    {
+      "id": "prod-001",
+      "localId": "loc-central",
+      "categoriaId": "cat-sandwiches",
+      "nombre": "Empanada de carne",
+      "descripcion": "Masa casera horneada con carne picada de res, huevo duro y aceituna negra.",
+      "precio": 5.0,
+      "fotografia": "https://images.unsplash.com/photo-1628106235974-f68c410b06a3?w=500&auto=format&fit=crop&q=80",
+      "tiempoPreparacionMin": 5,
+      "disponibilidad": "agotado_dia",
+      "gruposOpciones": [
+        {
+          "id": "grp-salsa",
+          "nombre": "Salsa para acompañar",
+          "obligatorio": false,
+          "tipo": "unica",
+          "maxSeleccion": 1,
+          "opciones": [
+            { "id": "opt-aji", "nombre": "Ají de la casa", "precioAdicional": 0.0 },
+            { "id": "opt-limon", "nombre": "Limón fresco", "precioAdicional": 0.0 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prod-002",
+      "localId": "loc-central",
+      "categoriaId": "cat-sandwiches",
+      "nombre": "Sándwich de pollo deshilachado",
+      "descripcion": "Pechuga de pollo sazonada con apio y mayonesa casera, lechuga y tomate en pan recién horneado.",
+      "precio": 10.0,
+      "fotografia": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=500&auto=format&fit=crop&q=80",
+      "tiempoPreparacionMin": 8,
+      "disponibilidad": "disponible",
+      "gruposOpciones": [
+        {
+          "id": "grp-pan-pollo",
+          "nombre": "Tipo de pan",
+          "obligatorio": true,
+          "tipo": "unica",
+          "maxSeleccion": 1,
+          "opciones": [
+            { "id": "opt-frances", "nombre": "Pan francés", "precioAdicional": 0.0 },
+            { "id": "opt-ciabatta", "nombre": "Pan ciabatta", "precioAdicional": 0.5 },
+            { "id": "opt-integral", "nombre": "Pan integral multigrano", "precioAdicional": 0.5 }
+          ]
+        },
+        {
+          "id": "grp-agregados-pollo",
+          "nombre": "Agregados opcionales",
+          "obligatorio": false,
+          "tipo": "multiple",
+          "maxSeleccion": 2,
+          "opciones": [
+            { "id": "opt-queso", "nombre": "agregar queso", "precioAdicional": 1.5 },
+            { "id": "opt-palta", "nombre": "Palta en rodajas", "precioAdicional": 1.5 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prod-003",
+      "localId": "loc-central",
+      "categoriaId": "cat-cafes",
+      "nombre": "Café pasado",
+      "descripcion": "Café pasado gota a gota de granos selectos de Chanchamayo.",
+      "precio": 4.0,
+      "fotografia": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500&auto=format&fit=crop&q=80",
+      "tiempoPreparacionMin": 3,
+      "disponibilidad": "disponible",
+      "gruposOpciones": []
+    },
+    {
+      "id": "prod-004",
+      "localId": "loc-central",
+      "categoriaId": "cat-cafes",
+      "nombre": "Cappuccino con espuma cremosa",
+      "descripcion": "Espresso intenso coronado con abundante espuma de leche vaporizada y toque de canela.",
+      "precio": 7.5,
+      "fotografia": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=500&auto=format&fit=crop&q=80",
+      "tiempoPreparacionMin": 4,
+      "disponibilidad": "disponible",
+      "gruposOpciones": [
+        {
+          "id": "grp-leche",
+          "nombre": "Tipo de leche",
+          "obligatorio": true,
+          "tipo": "unica",
+          "maxSeleccion": 1,
+          "opciones": [
+            { "id": "opt-leche-entera", "nombre": "Leche entera", "precioAdicional": 0.0 },
+            { "id": "opt-leche-deslactosada", "nombre": "Leche deslactosada", "precioAdicional": 0.5 },
+            { "id": "opt-leche-almendras", "nombre": "Leche de almendras", "precioAdicional": 1.5 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prod-005",
+      "localId": "loc-central",
+      "categoriaId": "cat-almuerzos",
+      "nombre": "Menú ejecutivo del día",
+      "descripcion": "Entrada: sopa de verduras o ensalada mixta. Segundo: lomo saltado casero o pechuga a la plancha con papas y arroz.",
+      "precio": 14.0,
+      "fotografia": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&auto=format&fit=crop&q=80",
+      "tiempoPreparacionMin": 15,
+      "disponibilidad": "agotado_dia",
+      "gruposOpciones": [
+        {
+          "id": "grp-segundo",
+          "nombre": "Plato de fondo",
+          "obligatorio": true,
+          "tipo": "unica",
+          "maxSeleccion": 1,
+          "opciones": [
+            { "id": "opt-lomo", "nombre": "Lomo saltado tradicional", "precioAdicional": 0.0 },
+            { "id": "opt-pechuga", "nombre": "Pechuga a la plancha c/ ensalada", "precioAdicional": 0.0 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prod-006",
+      "localId": "loc-central",
+      "categoriaId": "cat-postres",
+      "nombre": "Alfajor de maicena",
+      "descripcion": "Suave alfajor relleno con abundante manjarblanco artesanal y coco rallado.",
+      "precio": 3.5,
+      "fotografia": "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=500&auto=format&fit=crop&q=80",
+      "tiempoPreparacionMin": 2,
+      "disponibilidad": "disponible",
+      "gruposOpciones": []
+    },
+    {
+      "id": "prod-009",
+      "localId": "loc-central",
+      "categoriaId": "cat-postres",
+      "nombre": "Brownie con nueces",
+      "descripcion": "Brownie húmedo de chocolate bitter al 70% con trozos de pecanas.",
+      "precio": 6.0,
+      "fotografia": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=500&auto=format&fit=crop&q=80",
+      "tiempoPreparacionMin": 2,
+      "disponibilidad": "agotado_dia",
+      "gruposOpciones": []
+    },
+    {
+      "id": "prod-007",
+      "localId": "loc-jardin",
+      "categoriaId": "cat-jardin-saludable",
+      "nombre": "Açai Bowl Tropical",
+      "descripcion": "Pulpa de açai batida con plátano, fresas, granola artesanal y miel de abeja.",
+      "precio": 12.5,
+      "fotografia": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&auto=format&fit=crop&q=80",
+      "tiempoPreparacionMin": 8,
+      "disponibilidad": "disponible",
+      "gruposOpciones": []
+    },
+    {
+      "id": "prod-008",
+      "localId": "loc-jardin",
+      "categoriaId": "cat-jardin-cafes",
+      "nombre": "Iced Matcha Latte",
+      "descripcion": "Té matcha ceremonial japonés con leche vaporizada fría y hielo.",
+      "precio": 10.0,
+      "fotografia": "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=500&auto=format&fit=crop&q=80",
+      "tiempoPreparacionMin": 5,
+      "disponibilidad": "disponible",
+      "gruposOpciones": []
+    }
+  ],
+  "pedidos": [
+    {
+      "id": "ped-4842",
+      "codigoPedido": "PED-4842",
+      "comensalId": "usr-mateo",
+      "comensalNombre": "Mateo Rojas",
+      "comensalCorreo": "mateo.rojas@aloe.ulima.edu.pe",
+      "comensalTelefono": "987 654 321",
+      "comensalHistorial": "24 pedidos · 0 no recogidos",
+      "localId": "loc-central",
+      "items": [
+        {
+          "itemCarritoId": "item-4842-1",
+          "productoId": "prod-002",
+          "nombre": "Sándwich de pollo deshilachado",
+          "precioBase": 11.5,
+          "cantidad": 2,
+          "opcionesSeleccionadas": [
+            { "nombre": "Pan francés", "precioAdicional": 0.0 },
+            { "nombre": "agregar queso", "precioAdicional": 1.5 }
+          ],
+          "nota": "",
+          "subtotal": 23.0
+        },
+        {
+          "itemCarritoId": "item-4842-2",
+          "productoId": "prod-004",
+          "nombre": "Jugo surtido",
+          "precioBase": 9.0,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [
+            { "nombre": "Tamaño grande", "precioAdicional": 0.0 },
+            { "nombre": "sin azúcar", "precioAdicional": 0.0 }
+          ],
+          "nota": "",
+          "subtotal": 9.0
+        },
+        {
+          "itemCarritoId": "item-4842-3",
+          "productoId": "prod-003",
+          "nombre": "Café pasado",
+          "precioBase": 4.0,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [
+            { "nombre": "Empaque para llevar", "precioAdicional": 0.0 }
+          ],
+          "nota": "",
+          "subtotal": 4.0
+        }
+      ],
+      "total": 36.0,
+      "horaRecojo": "11:30",
+      "horaRecibido": "11:10",
+      "horaPreparacion": null,
+      "horaListo": null,
+      "horaEntrega": null,
+      "fechaPedido": "15/09/2026",
+      "fechaHoraCreacion": "2026-09-15T11:10:00Z",
+      "estado": "recibido",
+      "minutosRestantes": 18,
+      "vencido": false,
+      "vencidoMinutos": 0,
+      "motivoRechazo": null,
+      "categoriaRechazo": null,
+      "motivoCancelacion": null,
+      "calificado": false
+    },
+    {
+      "id": "ped-4843",
+      "codigoPedido": "PED-4843",
+      "comensalId": "usr-lucia",
+      "comensalNombre": "Lucía Farfán",
+      "comensalCorreo": "lucia.farfan@aloe.ulima.edu.pe",
+      "comensalTelefono": "988 112 233",
+      "comensalHistorial": "9 pedidos · 0 no recogidos",
+      "localId": "loc-central",
+      "items": [
+        {
+          "itemCarritoId": "item-4843-1",
+          "productoId": "prod-006",
+          "nombre": "Alfajor de maicena",
+          "precioBase": 3.5,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [
+            { "nombre": "Empaque para llevar", "precioAdicional": 0.0 }
+          ],
+          "nota": "",
+          "subtotal": 3.5
+        }
+      ],
+      "total": 3.5,
+      "horaRecojo": "11:30",
+      "horaRecibido": "11:12",
+      "horaPreparacion": null,
+      "horaListo": null,
+      "horaEntrega": null,
+      "fechaPedido": "15/09/2026",
+      "fechaHoraCreacion": "2026-09-15T11:12:00Z",
+      "estado": "recibido",
+      "minutosRestantes": 18,
+      "vencido": false,
+      "vencidoMinutos": 0,
+      "motivoRechazo": null,
+      "categoriaRechazo": null,
+      "motivoCancelacion": null,
+      "calificado": false
+    },
+    {
+      "id": "ped-4845",
+      "codigoPedido": "PED-4845",
+      "comensalId": "usr-diego",
+      "comensalNombre": "Diego Salazar",
+      "comensalCorreo": "diego.salazar@aloe.ulima.edu.pe",
+      "comensalTelefono": "977 445 566",
+      "comensalHistorial": "14 pedidos · 0 no recogidos",
+      "localId": "loc-central",
+      "items": [
+        {
+          "itemCarritoId": "item-4845-1",
+          "productoId": "prod-005",
+          "nombre": "Menú ejecutivo del día",
+          "precioBase": 14.0,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [
+            { "nombre": "Lomo saltado tradicional", "precioAdicional": 0.0 }
+          ],
+          "nota": "",
+          "subtotal": 14.0
+        },
+        {
+          "itemCarritoId": "item-4845-2",
+          "productoId": "prod-003",
+          "nombre": "Café pasado",
+          "precioBase": 4.0,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [
+            { "nombre": "Sin azúcar", "precioAdicional": 0.0 }
+          ],
+          "nota": "",
+          "subtotal": 4.0
+        }
+      ],
+      "total": 18.0,
+      "horaRecojo": "12:00",
+      "horaRecibido": "11:15",
+      "horaPreparacion": null,
+      "horaListo": null,
+      "horaEntrega": null,
+      "fechaPedido": "15/09/2026",
+      "fechaHoraCreacion": "2026-09-15T11:15:00Z",
+      "estado": "recibido",
+      "minutosRestantes": 45,
+      "vencido": false,
+      "vencidoMinutos": 0,
+      "motivoRechazo": null,
+      "categoriaRechazo": null,
+      "motivoCancelacion": null,
+      "calificado": false
+    },
+    {
+      "id": "ped-4821",
+      "codigoPedido": "PED-4821",
+      "comensalId": "usr-mateo",
+      "comensalNombre": "Mateo Rojas Ibáñez",
+      "comensalCorreo": "mateo.rojas@aloe.ulima.edu.pe",
+      "comensalTelefono": "987 654 321",
+      "comensalHistorial": "24 pedidos · 0 no recogidos",
+      "localId": "loc-central",
+      "items": [
+        {
+          "itemCarritoId": "item-4821-1",
+          "productoId": "prod-002",
+          "nombre": "Sándwich de pollo deshilachado",
+          "precioBase": 11.5,
+          "cantidad": 2,
+          "opcionesSeleccionadas": [
+            { "nombre": "Pan francés", "precioAdicional": 0.0 },
+            { "nombre": "agregar queso", "precioAdicional": 1.5 },
+            { "nombre": "en el local", "precioAdicional": 0.0 }
+          ],
+          "nota": "sin cebolla, por favor.",
+          "subtotal": 23.0
+        },
+        {
+          "itemCarritoId": "item-4821-2",
+          "productoId": "prod-004",
+          "nombre": "Jugo surtido",
+          "precioBase": 9.0,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [
+            { "nombre": "Tamaño grande", "precioAdicional": 0.0 },
+            { "nombre": "sin azúcar", "precioAdicional": 0.0 }
+          ],
+          "nota": "",
+          "subtotal": 9.0
+        },
+        {
+          "itemCarritoId": "item-4821-3",
+          "productoId": "prod-003",
+          "nombre": "Café pasado",
+          "precioBase": 4.0,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [
+            { "nombre": "Empaque para llevar", "precioAdicional": 0.0 }
+          ],
+          "nota": "",
+          "subtotal": 4.0
+        }
+      ],
+      "total": 36.0,
+      "horaRecojo": "11:30",
+      "horaRecibido": "11:02",
+      "horaPreparacion": "11:14",
+      "horaListo": null,
+      "horaEntrega": null,
+      "fechaPedido": "15/09/2026",
+      "fechaHoraCreacion": "2026-09-15T11:02:00Z",
+      "estado": "en_preparacion",
+      "minutosRestantes": 6,
+      "vencido": false,
+      "vencidoMinutos": 0,
+      "motivoRechazo": null,
+      "categoriaRechazo": null,
+      "motivoCancelacion": null,
+      "calificado": false
+    },
+    {
+      "id": "ped-4830",
+      "codigoPedido": "PED-4830",
+      "comensalId": "usr-camila",
+      "comensalNombre": "Camila Ayala",
+      "comensalCorreo": "camila.ayala@aloe.ulima.edu.pe",
+      "comensalTelefono": "965 432 109",
+      "comensalHistorial": "18 pedidos · 0 no recogidos",
+      "localId": "loc-central",
+      "items": [
+        {
+          "itemCarritoId": "item-4830-1",
+          "productoId": "prod-004",
+          "nombre": "Cappuccino con espuma cremosa",
+          "precioBase": 7.5,
+          "cantidad": 2,
+          "opcionesSeleccionadas": [
+            { "nombre": "Leche deslactosada", "precioAdicional": 0.5 }
+          ],
+          "nota": "",
+          "subtotal": 16.0
+        },
+        {
+          "itemCarritoId": "item-4830-2",
+          "productoId": "prod-006",
+          "nombre": "Alfajor de maicena",
+          "precioBase": 3.5,
+          "cantidad": 2,
+          "opcionesSeleccionadas": [],
+          "nota": "",
+          "subtotal": 7.0
+        }
+      ],
+      "total": 23.0,
+      "horaRecojo": "12:00",
+      "horaRecibido": "11:05",
+      "horaPreparacion": "11:16",
+      "horaListo": null,
+      "horaEntrega": null,
+      "fechaPedido": "15/09/2026",
+      "fechaHoraCreacion": "2026-09-15T11:05:00Z",
+      "estado": "en_preparacion",
+      "minutosRestantes": 36,
+      "vencido": false,
+      "vencidoMinutos": 0,
+      "motivoRechazo": null,
+      "categoriaRechazo": null,
+      "motivoCancelacion": null,
+      "calificado": false
+    },
+    {
+      "id": "ped-4835",
+      "codigoPedido": "PED-4835",
+      "comensalId": "usr-andrea",
+      "comensalNombre": "Andrea Núñez",
+      "comensalCorreo": "andrea.nunez@aloe.ulima.edu.pe",
+      "comensalTelefono": "992 345 678",
+      "comensalHistorial": "11 pedidos · 0 no recogidos",
+      "localId": "loc-central",
+      "items": [
+        {
+          "itemCarritoId": "item-4835-1",
+          "productoId": "prod-003",
+          "nombre": "Café pasado",
+          "precioBase": 4.0,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [
+            { "nombre": "empaque para llevar", "precioAdicional": 0.0 }
+          ],
+          "nota": "",
+          "subtotal": 4.0
+        },
+        {
+          "itemCarritoId": "item-4835-2",
+          "productoId": "prod-006",
+          "nombre": "Alfajor de maicena",
+          "precioBase": 3.5,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [],
+          "nota": "",
+          "subtotal": 3.5
+        }
+      ],
+      "total": 7.5,
+      "horaRecojo": "11:00",
+      "horaRecibido": "10:40",
+      "horaPreparacion": "10:45",
+      "horaListo": "10:54",
+      "horaEntrega": null,
+      "fechaPedido": "15/09/2026",
+      "fechaHoraCreacion": "2026-09-15T10:40:00Z",
+      "estado": "listo",
+      "minutosRestantes": 0,
+      "vencido": false,
+      "vencidoMinutos": 0,
+      "motivoRechazo": null,
+      "categoriaRechazo": null,
+      "motivoCancelacion": null,
+      "calificado": false
+    },
+    {
+      "id": "ped-4838",
+      "codigoPedido": "PED-4838",
+      "comensalId": "usr-joaquin",
+      "comensalNombre": "Joaquín Bravo",
+      "comensalCorreo": "joaquin.bravo@aloe.ulima.edu.pe",
+      "comensalTelefono": "954 321 876",
+      "comensalHistorial": "7 pedidos · 0 no recogidos",
+      "localId": "loc-central",
+      "items": [
+        {
+          "itemCarritoId": "item-4838-1",
+          "productoId": "prod-002",
+          "nombre": "Sándwich de pollo deshilachado",
+          "precioBase": 9.5,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [
+            { "nombre": "Pan ciabatta", "precioAdicional": 0.5 }
+          ],
+          "nota": "",
+          "subtotal": 9.5
+        },
+        {
+          "itemCarritoId": "item-4838-2",
+          "productoId": "prod-006",
+          "nombre": "Alfajor de maicena",
+          "precioBase": 3.5,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [],
+          "nota": "",
+          "subtotal": 3.5
+        }
+      ],
+      "total": 13.0,
+      "horaRecojo": "11:00",
+      "horaRecibido": "10:42",
+      "horaPreparacion": "10:48",
+      "horaListo": "10:56",
+      "horaEntrega": null,
+      "fechaPedido": "15/09/2026",
+      "fechaHoraCreacion": "2026-09-15T10:42:00Z",
+      "estado": "listo",
+      "minutosRestantes": 0,
+      "vencido": false,
+      "vencidoMinutos": 0,
+      "motivoRechazo": null,
+      "categoriaRechazo": null,
+      "motivoCancelacion": null,
+      "calificado": false
+    },
+    {
+      "id": "ped-4805",
+      "codigoPedido": "PED-4805",
+      "comensalId": "usr-renzo",
+      "comensalNombre": "Renzo Vílchez Paredes",
+      "comensalCorreo": "renzo.vilchez@aloe.ulima.edu.pe",
+      "comensalTelefono": "981 234 567",
+      "comensalHistorial": "15 pedidos · 0 no recogidos",
+      "localId": "loc-central",
+      "items": [
+        {
+          "itemCarritoId": "item-4805-1",
+          "productoId": "prod-002",
+          "nombre": "Sándwich de pollo deshilachado",
+          "precioBase": 8.5,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [
+            { "nombre": "Pan francés", "precioAdicional": 0.0 }
+          ],
+          "nota": "",
+          "subtotal": 8.5
+        },
+        {
+          "itemCarritoId": "item-4805-2",
+          "productoId": "prod-003",
+          "nombre": "Café pasado",
+          "precioBase": 4.0,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [],
+          "nota": "",
+          "subtotal": 4.0
+        }
+      ],
+      "total": 12.5,
+      "horaRecojo": "10:30",
+      "horaRecibido": "10:08",
+      "horaPreparacion": "10:15",
+      "horaListo": "10:25",
+      "horaEntrega": "10:34",
+      "fechaPedido": "15/09/2026",
+      "fechaHoraCreacion": "2026-09-15T10:08:00Z",
+      "estado": "entregado",
+      "minutosRestantes": 0,
+      "vencido": false,
+      "vencidoMinutos": 0,
+      "motivoRechazo": null,
+      "categoriaRechazo": null,
+      "motivoCancelacion": null,
+      "calificado": true
+    },
+    {
+      "id": "ped-4808",
+      "codigoPedido": "PED-4808",
+      "comensalId": "usr-paula",
+      "comensalNombre": "Paula Zegarra Ruiz",
+      "comensalCorreo": "paula.zegarra@aloe.ulima.edu.pe",
+      "comensalTelefono": "943 210 987",
+      "comensalHistorial": "12 pedidos · 0 no recogidos",
+      "localId": "loc-central",
+      "items": [
+        {
+          "itemCarritoId": "item-4808-1",
+          "productoId": "prod-003",
+          "nombre": "Café pasado",
+          "precioBase": 4.5,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [
+            { "nombre": "Con leche", "precioAdicional": 0.5 }
+          ],
+          "nota": "",
+          "subtotal": 4.5
+        }
+      ],
+      "total": 4.5,
+      "horaRecojo": "10:30",
+      "horaRecibido": "10:12",
+      "horaPreparacion": "10:18",
+      "horaListo": "10:27",
+      "horaEntrega": "10:41",
+      "fechaPedido": "15/09/2026",
+      "fechaHoraCreacion": "2026-09-15T10:12:00Z",
+      "estado": "entregado",
+      "minutosRestantes": 0,
+      "vencido": false,
+      "vencidoMinutos": 0,
+      "motivoRechazo": null,
+      "categoriaRechazo": null,
+      "motivoCancelacion": null,
+      "calificado": false
+    },
+    {
+      "id": "ped-4812",
+      "codigoPedido": "PED-4812",
+      "comensalId": "usr-sofia",
+      "comensalNombre": "Sofía Cárdenas Loayza",
+      "comensalCorreo": "sofia.cardenas@aloe.ulima.edu.pe",
+      "comensalTelefono": "932 109 876",
+      "comensalHistorial": "19 pedidos · 0 no recogidos",
+      "localId": "loc-central",
+      "items": [
+        {
+          "itemCarritoId": "item-4812-1",
+          "productoId": "prod-005",
+          "nombre": "Menú ejecutivo del día",
+          "precioBase": 14.0,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [
+            { "nombre": "Pechuga a la plancha c/ ensalada", "precioAdicional": 0.0 }
+          ],
+          "nota": "",
+          "subtotal": 14.0
+        },
+        {
+          "itemCarritoId": "item-4812-2",
+          "productoId": "prod-006",
+          "nombre": "Alfajor de maicena",
+          "precioBase": 3.5,
+          "cantidad": 2,
+          "opcionesSeleccionadas": [],
+          "nota": "",
+          "subtotal": 7.0
+        }
+      ],
+      "total": 21.0,
+      "horaRecojo": "11:00",
+      "horaRecibido": "10:30",
+      "horaPreparacion": "10:40",
+      "horaListo": "10:55",
+      "horaEntrega": "11:05",
+      "fechaPedido": "15/09/2026",
+      "fechaHoraCreacion": "2026-09-15T10:30:00Z",
+      "estado": "entregado",
+      "minutosRestantes": 0,
+      "vencido": false,
+      "vencidoMinutos": 0,
+      "motivoRechazo": null,
+      "categoriaRechazo": null,
+      "motivoCancelacion": null,
+      "calificado": false
+    },
+    {
+      "id": "ped-4790",
+      "codigoPedido": "PED-4790",
+      "comensalId": "usr-lucia",
+      "comensalNombre": "Lucía Farfán Delgado",
+      "comensalCorreo": "lucia.farfan@aloe.ulima.edu.pe",
+      "comensalTelefono": "988 112 233",
+      "comensalHistorial": "9 pedidos · 1 no recogido",
+      "localId": "loc-central",
+      "items": [
+        {
+          "itemCarritoId": "item-4790-1",
+          "productoId": "prod-002",
+          "nombre": "Sándwich de pollo deshilachado",
+          "precioBase": 8.5,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [
+            { "nombre": "Pan ciabatta", "precioAdicional": 0.0 }
+          ],
+          "nota": "Para llevar",
+          "subtotal": 8.5
+        },
+        {
+          "itemCarritoId": "item-4790-2",
+          "productoId": "prod-006",
+          "nombre": "Alfajor de maicena",
+          "precioBase": 3.5,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [],
+          "nota": "",
+          "subtotal": 3.5
+        }
+      ],
+      "total": 12.0,
+      "horaRecojo": "10:30",
+      "horaRecibido": "10:02",
+      "horaPreparacion": "10:10",
+      "horaListo": "10:22",
+      "horaEntrega": null,
+      "fechaPedido": "15/09/2026",
+      "fechaHoraCreacion": "2026-09-15T10:02:00Z",
+      "estado": "listo",
+      "minutosRestantes": -22,
+      "vencido": true,
+      "vencidoMinutos": 22,
+      "motivoRechazo": null,
+      "categoriaRechazo": null,
+      "motivoCancelacion": null,
+      "calificado": false
+    },
+    {
+      "id": "ped-4795",
+      "codigoPedido": "PED-4795",
+      "comensalId": "usr-carlos",
+      "comensalNombre": "Carlos Mendoza",
+      "comensalCorreo": "carlos.mendoza@aloe.ulima.edu.pe",
+      "comensalTelefono": "976 543 210",
+      "comensalHistorial": "6 pedidos · 2 no recogidos",
+      "localId": "loc-central",
+      "items": [
+        {
+          "itemCarritoId": "item-4795-1",
+          "productoId": "prod-001",
+          "nombre": "Empanada de carne",
+          "precioBase": 5.0,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [
+            { "nombre": "Ají de la casa", "precioAdicional": 0.0 }
+          ],
+          "nota": "",
+          "subtotal": 5.0
+        }
+      ],
+      "total": 5.0,
+      "horaRecojo": "10:30",
+      "horaRecibido": "10:05",
+      "horaPreparacion": "10:12",
+      "horaListo": "10:25",
+      "horaEntrega": null,
+      "fechaPedido": "15/09/2026",
+      "fechaHoraCreacion": "2026-09-15T10:05:00Z",
+      "estado": "listo",
+      "minutosRestantes": -18,
+      "vencido": true,
+      "vencidoMinutos": 18,
+      "motivoRechazo": null,
+      "categoriaRechazo": null,
+      "motivoCancelacion": null,
+      "calificado": false
+    },
+    {
+      "id": "ped-4712",
+      "codigoPedido": "PED-4712",
+      "comensalId": "usr-mateo",
+      "comensalNombre": "Mateo Rojas Ibáñez",
+      "comensalCorreo": "mateo.rojas@aloe.ulima.edu.pe",
+      "comensalTelefono": "987 654 321",
+      "comensalHistorial": "24 pedidos · 0 no recogidos",
+      "localId": "loc-central",
+      "items": [
+        {
+          "itemCarritoId": "item-4712-1",
+          "productoId": "prod-005",
+          "nombre": "Menú ejecutivo del día",
+          "precioBase": 14.0,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [],
+          "nota": "",
+          "subtotal": 14.0
+        }
+      ],
+      "total": 14.0,
+      "horaRecojo": "12:00",
+      "horaRecibido": "11:00",
+      "horaPreparacion": null,
+      "horaListo": null,
+      "horaEntrega": null,
+      "fechaPedido": "15/09/2026",
+      "fechaHoraCreacion": "2026-09-15T11:00:00Z",
+      "estado": "rechazado",
+      "minutosRestantes": 0,
+      "vencido": false,
+      "vencidoMinutos": 0,
+      "categoriaRechazo": "Producto agotado",
+      "motivoRechazo": "Se terminó el menú ejecutivo antes de tu franja de recojo.",
+      "motivoCancelacion": null,
+      "calificado": false
+    },
+    {
+      "id": "ped-4750",
+      "codigoPedido": "PED-4750",
+      "comensalId": "usr-mateo",
+      "comensalNombre": "Mateo Rojas Ibáñez",
+      "comensalCorreo": "mateo.rojas@aloe.ulima.edu.pe",
+      "comensalTelefono": "987 654 321",
+      "comensalHistorial": "24 pedidos · 0 no recogidos",
+      "localId": "loc-central",
+      "items": [
+        {
+          "itemCarritoId": "item-4750-1",
+          "productoId": "prod-004",
+          "nombre": "Cappuccino con espuma cremosa",
+          "precioBase": 7.5,
+          "cantidad": 1,
+          "opcionesSeleccionadas": [
+            { "nombre": "Leche entera", "precioAdicional": 0.0 }
+          ],
+          "nota": "",
+          "subtotal": 7.5
+        }
+      ],
+      "total": 7.5,
+      "horaRecojo": "14:00",
+      "horaRecibido": "10:15",
+      "horaPreparacion": null,
+      "horaListo": null,
+      "horaEntrega": null,
+      "fechaPedido": "15/09/2026",
+      "fechaHoraCreacion": "2026-09-15T10:15:00Z",
+      "estado": "cancelado",
+      "minutosRestantes": 0,
+      "vencido": false,
+      "vencidoMinutos": 0,
+      "categoriaRechazo": null,
+      "motivoRechazo": null,
+      "motivoCancelacion": "El comensal canceló por cruce de horario de clases.",
+      "calificado": false
+    }
+  ],
+  "valoraciones": [
+    {
+      "id": "val-001",
+      "pedidoId": "ped-4805",
+      "comensalId": "usr-renzo",
+      "comensalNombre": "Renzo Vílchez Paredes",
+      "localId": "loc-central",
+      "puntajeLocal": 5,
+      "comentarioLocal": "Excelente atención y puntualidad en la entrega. El café estaba bien caliente.",
+      "fechaCalificacion": "2026-09-15T10:45:00Z",
+      "fechaEditableHasta": "2026-09-16T10:45:00Z",
+      "productos": [
+        {
+          "productoId": "prod-003",
+          "nombre": "Café pasado",
+          "puntaje": 5,
+          "comentario": "Buen grano de café, aroma y acidez balanceada."
+        }
+      ]
+    }
+  ]
+}

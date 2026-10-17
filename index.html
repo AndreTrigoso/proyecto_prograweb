@@ -1,155 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pedidos anticipados · Cafeterías del campus</title>
-    <link rel="stylesheet" href="estilos.css">
-</head>
-<body>
-    <header class="cabecera">
-        <div class="contenedor cabecera-contenido">
-            <a href="index.html" class="logo">Cafeterías<span>Ulima</span></a>
-            <nav class="enlaces">
-                <a href="#locales">Locales</a>
-                <a href="#como-funciona">Cómo funciona</a>
-            </nav>
-            <div class="acciones">
-                <a href="login.html" class="boton boton-terciario">Iniciar sesión</a>
-                <a href="registro.html" class="boton boton-primario">Crear cuenta</a>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <section class="banner">
-            <div class="contenedor banner-contenido">
-                <div class="banner-texto">
-                    <h1>Pide antes, recoge sin hacer cola</h1>
-                    <p>Elige tu comida en las cafeterías del campus, reserva una hora de recojo y paga directamente en el local.</p>
-                    <div class="acciones">
-                        <a href="#locales" class="boton boton-primario">Ver locales</a>
-                        <a href="#como-funciona" class="boton boton-secundario">Cómo funciona</a>
-                    </div>
-                </div>
-                <div class="banner-imagen">
-                    <img src="banner.jpg" alt="Pedido listo para recoger en la cafetería">
-                </div>
-            </div>
-        </section>
-
-        <section id="locales" class="seccion">
-            <div class="contenedor">
-                <h2>Locales del campus</h2>
-                <p class="subtitulo">Mira la carta de cada local. Para pedir necesitas una cuenta.</p>
-
-                <div class="tarjetas">
-                    <article class="tarjeta">
-                        <img src="local1.jpg" alt="Cafetería Central">
-                        <div class="tarjeta-cuerpo">
-                            <span class="badge badge-abierto">Abierto</span>
-                            <h3>Cafetería Central</h3>
-                            <p>Edificio F2 · piso 1</p>
-                            <p class="ayuda">Atiende de 7:30 a 19:00</p>
-                            <a href="carta.html" class="boton boton-secundario">Ver carta</a>
-                        </div>
-                    </article>
-
-                    <article class="tarjeta">
-                        <img src="local2.jpg" alt="Café del Jardín">
-                        <div class="tarjeta-cuerpo">
-                            <span class="badge badge-abierto">Abierto</span>
-                            <h3>Café del Jardín</h3>
-                            <p>Atras del N · jardín</p>
-                            <p class="ayuda">Atiende de 8:00 a 18:00</p>
-                            <a href="carta.html" class="boton boton-secundario">Ver carta</a>
-                        </div>
-                    </article>
-
-                    <article class="tarjeta">
-                        <img src="local3.jpg" alt="Kiosco Ingeniería">
-                        <div class="tarjeta-cuerpo">
-                            <span class="badge badge-cerrado">Cerrado</span>
-                            <h3>Kiosco Ingeniería</h3>
-                            <p>Edificio O2 · piso -1</p>
-                            <p class="ayuda">Abre mañana a las 8:00</p>
-                            <a href="carta.html" class="boton boton-secundario">Ver carta</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="como-funciona" class="seccion seccion-suave">
-            <div class="contenedor">
-                <h2>Cómo funciona</h2>
-                <div class="pasos">
-                    <div class="paso">
-                        <span class="paso-numero">1</span>
-                        <h3>Elige tus productos</h3>
-                        <p>Revisa la carta del local, personaliza con opciones y agrégalos al carrito.</p>
-                    </div>
-                    <div class="paso">
-                        <span class="paso-numero">2</span>
-                        <h3>Escoge la hora de recojo</h3>
-                        <p>Selecciona una franja disponible y confirma tu pedido. Recibirás un código.</p>
-                    </div>
-                    <div class="paso">
-                        <span class="paso-numero">3</span>
-                        <h3>Recoge y paga en el local</h3>
-                        <p>Muestra tu código en la cafetería. El pago se hace siempre en el punto de recojo.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta">
-            <div class="contenedor cta-contenido">
-                <div>
-                    <h2>¿Tienes una cafetería en el campus?</h2>
-                    <p>Registra tu local y recibe pedidos anticipados organizados por hora de recojo.</p>
-                </div>
-                <a href="registro-local.html" class="boton boton-primario">Registrar mi local</a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="pie">
-        <div class="contenedor pie-contenido">
-            <div class="pie-columna">
-                <a href="index.html" class="logo logo-claro">Cafeterías<span>Ulima</span></a>
-                <p>Pedidos anticipados en las cafeterías del campus de la Universidad de Lima.</p>
-            </div>
-            <div class="pie-columna">
-                <h4>Explorar</h4>
-                <ul>
-                    <li><a href="#locales">Locales</a></li>
-                    <li><a href="#como-funciona">Cómo funciona</a></li>
-                    <li><a href="login.html">Iniciar sesión</a></li>
-                    <li><a href="registro.html">Crear cuenta</a></li>
-                </ul>
-            </div>
-            <div class="pie-columna">
-                <h4>Para locales</h4>
-                <ul>
-                    <li><a href="registro-local.html">Registrar mi local</a></li>
-                    <li><a href="login.html">Acceso para locales</a></li>
-                </ul>
-            </div>
-            <div class="pie-columna">
-                <h4>Contacto</h4>
-                <ul>
-                    <li>soporte@ulima.edu.pe</li>
-                    <li>Lunes a viernes, 8:00 a 18:00</li>
-                    <li>Av. Javier Prado Este 4600, Lima</li>
-                </ul>
-            </div>
-        </div>
-        <div class="pie-inferior">
-            <div class="contenedor">
-                <p>© 2026 Universidad de Lima. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
-</body>
+    <!-- Google Fonts: Poppins (500, 600, 700) e Inter (400, 500, 600) según diseño -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
