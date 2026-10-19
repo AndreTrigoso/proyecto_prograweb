@@ -26,9 +26,6 @@ export function initializeStorage(forceReset = false) {
     localStorage.setItem(STORAGE_KEYS.VALORACIONES, JSON.stringify(initialSeeds.valoraciones || []));
     localStorage.setItem(STORAGE_KEYS.INIT_FLAG, 'true');
 
-    // Por defecto iniciar en el rol Local (Cafetería Central) para evaluar HU-5 directamente
-    const defaultLocalUser = (initialSeeds.usuarios || []).find(u => u.id === 'usr-local-central') || initialSeeds.usuarios[0];
-    localStorage.setItem(STORAGE_KEYS.SESSION, JSON.stringify(defaultLocalUser));
   }
 }
 
@@ -127,6 +124,14 @@ export const localesService = {
   getAll: () => getCollection(STORAGE_KEYS.LOCALES),
   getById: (id) => getCollection(STORAGE_KEYS.LOCALES).find(l => l.id === id) || null,
 
+  create: (nuevoLocal) => {
+    const locales = getCollection(STORAGE_KEYS.LOCALES);
+    const local = { ...nuevoLocal, id: nuevoLocal.id || `loc-${Date.now()}` };
+    locales.push(local);
+    saveCollection(STORAGE_KEYS.LOCALES, locales);
+    return local;
+  },
+
   update: (id, updates) => {
     const locales = getCollection(STORAGE_KEYS.LOCALES);
     const index = locales.findIndex(l => l.id === id);
@@ -142,7 +147,10 @@ export const localesService = {
       motivoSuspension: nuevoEstado === 'suspendido' ? motivo : null
     });
   }
+
 };
+
+
 
 /* ==================== CATEGORÍAS Y PRODUCTOS ==================== */
 export const productosService = {
