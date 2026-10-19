@@ -1,10 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { usuariosService } from '../services/storageService';
+import { usuariosService } from '../services/storageService';
+import { authService } from '../services/authService';
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(() => usuariosService.getCurrentSession());
+  const [currentUser, setCurrentUser] = useState(() => authService.restoreSession());
 
   useEffect(() => {
     const handleSessionChange = (e) => {
@@ -14,22 +16,27 @@ export function AuthProvider({ children }) {
     return () => window.removeEventListener('pw_session_changed', handleSessionChange);
   }, []);
 
-  const login = (email, password) => {
-    const user = usuariosService.getByEmail(email);
-    if (!user) {
-      throw new Error('Correo o contraseña incorrectos.');
-    }
-    if (user.estadoCuenta === 'bloqueado') {
-      throw new Error(`Cuenta bloqueada: ${user.motivoBloqueo || 'Consulte con administración'}`);
-    }
-    usuariosService.setCurrentSession(user);
+  const login = async (email, password, remember = false) => {
+    const user = await authService.login({ email, password, remember });
     setCurrentUser(user);
     return user;
   };
 
   const logout = () => {
-    usuariosService.setCurrentSession(null);
+    authService.logout();
     setCurrentUser(null);
+  };
+
+  const actualizarPerfil = async (valores) => {
+    const user = await authService.updateProfile(currentUser.id, valores);
+    setCurrentUser(user);
+    return user;
+  };
+
+  const cambiarContrasena = async (valores) => {
+    const user = await authService.changePassword(currentUser.id, valores);
+    setCurrentUser(user);
+    return user;
   };
 
   // Helper para alternar rápidamente entre roles durante desarrollo y evaluación
@@ -60,6 +67,8 @@ export function AuthProvider({ children }) {
       isAuthenticated: !!currentUser,
       login,
       logout,
+      actualizarPerfil,
+      cambiarContrasena,
       switchRole
     }}>
       {children}
