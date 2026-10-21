@@ -1,0 +1,4 @@
+.recuperar__enviado { text-align: center; }
+.recuperar__icono { display: grid; place-items: center; width: 56px; height: 56px; margin: 0 auto var(--space-3); border-radius: 50%; background: var(--color-primary-soft); color: var(--color-primary); font-size: 22px; }
+.recuperar__espera { margin-top: var(--space-2); }
+.recuperar__demo { margin: var(--space-4) 0 0; text-align: left; }
