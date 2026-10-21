@@ -1,0 +1,10 @@
+/* Variantes que global.css no trae (los .btn base viven en global.css) */
+.btn-verde { background: var(--color-accent); color: #fff; }
+.btn-verde:hover:not(:disabled) { background: #4B8226; }
+.btn-texto { background: transparent; color: var(--color-primary); padding: 0 var(--space-3); }
+.btn-texto:hover:not(:disabled) { background: var(--color-primary-soft); }
+.btn--bloque { width: 100%; }
+.btn--cargando:disabled { background: var(--color-primary-dark); opacity: 1; cursor: progress; }
+
+.spinner { width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(255,255,255,.45); border-top-color: #fff; animation: giro .7s linear infinite; }
+@keyframes giro { to { transform: rotate(360deg); } }
