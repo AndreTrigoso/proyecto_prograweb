@@ -12,11 +12,24 @@ import {
 } from './components/common';
 import { PrerequisitesShowcase } from './components/dev/PrerequisitesShowcase';
 
+const pestanaDeRuta = (pathname) =>
+  Object.keys(RUTAS_PESTANAS).find((id) => pathname === RUTAS_PESTANAS[id] || pathname.startsWith(`${RUTAS_PESTANAS[id]}/`));
+
+// Las secciones del Sidebar de administrador llevan el prefijo "admin-" (ej. admin-tablero -> /admin/tablero).
+const rutaDeSeccion = (role, id) =>
+  id === 'prerrequisitos' ? '/prerrequisitos' : role === 'administrador' ? `/admin/${id.replace('admin-', '')}` : `/local/${id}`;
+
+const seccionDeRuta = (pathname) => {
+  const [, zona, seccion] = pathname.split('/');
+  return zona === 'admin' ? `admin-${seccion}` : zona === 'local' ? seccion : zona;
+};
+
 function MainLayout() {
   const { currentRole } = useAuth();
-  const [activeComensalTab, setActiveComensalTab] = useState('locales');
-  const [activeSidebarSection, setActiveSidebarSection] = useState('bandeja');
-  const [notification, setNotification] = useState(null);
+  const { notify: showToast } = useToast();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const activeComensalTab = pestanaDeRuta(pathname) || 'locales';
 
   const showToast = (toastData) => {
     setNotification(toastData);
@@ -34,6 +47,7 @@ function MainLayout() {
         activeTab={activeComensalTab}
         setActiveTab={setActiveComensalTab}
         onShowNotification={showToast}
+        onOpenAccount={() => navigate('/cuenta')}
         onOpenAuthModal={(type) => {
           showToast({
             type: 'info',
@@ -77,10 +91,11 @@ function MainLayout() {
             flex: 1,
             padding: isSidebarLayout ? 'var(--space-6) var(--space-8)' : 'var(--space-6) 0'
           }}
+
+
         >
-          <div className={isSidebarLayout ? '' : 'contenedor'}>
-            <PrerequisitesShowcase onShowNotification={showToast} />
-          </div>
+
+          <Outlet />
         </main>
       </div>
 
@@ -112,7 +127,9 @@ export default function App() {
     <AuthProvider>
       <DataProvider>
         <CartProvider>
-          <MainLayout />
+          <ToastProvider>
+            <MainLayout />
+          </ToastProvider>
         </CartProvider>
       </DataProvider>
     </AuthProvider>

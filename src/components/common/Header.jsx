@@ -3,9 +3,9 @@ import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import { useData } from '../../context/DataContext';
 import { localesService, usuariosService } from '../../services/storageService';
-import { ShoppingBag, LogOut, ChevronDown, Store, RotateCcw } from 'lucide-react';
+import { ShoppingBag, LogOut, ChevronDown, Store, RotateCcw, User } from 'lucide-react';
 
-export function Header({ onOpenAuthModal, activeTab, setActiveTab, onShowNotification }) {
+export function Header({ onOpenAuthModal, activeTab, setActiveTab, onShowNotification, onOpenAccount }) {
   const { currentUser, currentRole, logout, switchRole } = useAuth();
   const { totalItemsCount, setIsDrawerOpen, activeLocal } = useCart();
   const { locales, resetToSeeds } = useData();
@@ -541,6 +541,32 @@ export function Header({ onOpenAuthModal, activeTab, setActiveTab, onShowNotific
                       </p>
                     </div>
 
+                    {onOpenAccount && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          onOpenAccount();
+                          setUserMenuOpen(false);
+                        }}
+                        style={{
+                          width: '100%',
+                          textAlign: 'left',
+                          padding: '10px 12px',
+                          background: 'none',
+                          border: 'none',
+                          color: 'var(--color-text)',
+                          fontSize: '13px',
+                          fontWeight: '600',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        <User size={16} />
+                        Mi cuenta
+                      </button>
+                    )}
                     <button
                       type="button"
                       onClick={() => {
