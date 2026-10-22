@@ -151,6 +151,123 @@ export const productosService = {
     return localId ? cats.filter(c => c.localId === localId).sort((a, b) => a.orden - b.orden) : cats;
   },
 
+  crearCategoria: (localId, nombre) => {
+    const categorias = getCollection(STORAGE_KEYS.CATEGORIAS);
+
+    const existentes = categorias.filter(
+      categoria => categoria.localId === localId
+    );
+
+    const nombreNormalizado = nombre.trim();
+
+    if (!nombreNormalizado) {
+      throw new Error("El nombre de la categoría es obligatorio.");
+    }
+
+    const duplicada = existentes.some(
+      categoria =>
+        categoria.nombre.trim().toLowerCase() ===
+        nombreNormalizado.toLowerCase()
+    );
+
+    if (duplicada) {
+      throw new Error("Ya existe una categoría con ese nombre.");
+    }
+
+    const siguienteOrden =
+      Math.max(0, ...existentes.map(c => Number(c.orden) || 0)) + 1;
+
+    const nuevaCategoria = {
+      id: `cat-${crypto.randomUUID()}`,
+      localId,
+      nombre: nombreNormalizado,
+      orden: siguienteOrden
+    };
+
+    categorias.push(nuevaCategoria);
+
+    saveCollection(STORAGE_KEYS.CATEGORIAS, categorias);
+
+    return nuevaCategoria;
+  },
+
+  editarCategoria: (localId, categoriaId, nombre) => {
+    const categorias = getCollection(STORAGE_KEYS.CATEGORIAS);
+
+    const indice = categorias.findIndex(
+      categoria =>
+        categoria.id === categoriaId &&
+        categoria.localId === localId
+    );
+
+    if (indice === -1) {
+      throw new Error("Categoría no encontrada.");
+    }
+
+    const nombreNormalizado = nombre.trim();
+
+    if (!nombreNormalizado) {
+      throw new Error("El nombre de la categoría es obligatorio.");
+    }
+
+    const duplicada = categorias.some(
+      categoria =>
+        categoria.localId === localId &&
+        categoria.id !== categoriaId &&
+        categoria.nombre.trim().toLowerCase() ===
+          nombreNormalizado.toLowerCase()
+    );
+
+    if (duplicada) {
+      throw new Error("Ya existe una categoría con ese nombre.");
+    }
+
+    categorias[indice] = {
+      ...categorias[indice],
+      nombre: nombreNormalizado
+    };
+
+    saveCollection(STORAGE_KEYS.CATEGORIAS, categorias);
+
+    return categorias[indice];
+  },
+
+  eliminarCategoria: (localId, categoriaId) => {
+    const categorias = getCollection(STORAGE_KEYS.CATEGORIAS);
+
+    const existe = categorias.some(
+      categoria =>
+        categoria.id === categoriaId &&
+        categoria.localId === localId
+    );
+
+    if (!existe) {
+      throw new Error("Categoría no encontrada.");
+    }
+
+    const tieneProductos = getCollection(
+      STORAGE_KEYS.PRODUCTOS
+    ).some(
+      producto =>
+        producto.localId === localId &&
+        producto.categoriaId === categoriaId
+    );
+
+    if (tieneProductos) {
+      throw new Error(
+        "No puedes eliminar una categoría que contiene productos."
+      );
+    }
+
+    const restantes = categorias.filter(
+      categoria => categoria.id !== categoriaId
+    );
+
+    saveCollection(STORAGE_KEYS.CATEGORIAS, restantes);
+
+    return true;
+  },
+
   getAll: () => getCollection(STORAGE_KEYS.PRODUCTOS),
 
   getByLocal: (localId) => {
