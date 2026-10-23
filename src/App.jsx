@@ -8,14 +8,20 @@ import {
   Sidebar,
   CartDrawer,
   Footer,
-  NotificationToast
+  NotificationToast,
+  EmptyState
 } from './components/common';
+import PaginaBandejaDia from './pages/PaginaBandejaDia';
+import PaginaDetallePedido from './pages/PaginaDetallePedido';
+import PaginaEntregaCodigo from './pages/PaginaEntregaCodigo';
+import PaginaResumenDia from './pages/PaginaResumenDia';
 import { PrerequisitesShowcase } from './components/dev/PrerequisitesShowcase';
 
 function MainLayout() {
   const { currentRole } = useAuth();
   const [activeComensalTab, setActiveComensalTab] = useState('locales');
   const [activeSidebarSection, setActiveSidebarSection] = useState('bandeja');
+  const [selectedPedidoId, setSelectedPedidoId] = useState('ped-4821');
   const [notification, setNotification] = useState(null);
 
   const showToast = (toastData) => {
@@ -26,6 +32,62 @@ function MainLayout() {
   };
 
   const isSidebarLayout = currentRole === 'local' || currentRole === 'administrador';
+
+  const handleOpenDetallePedido = (pedido) => {
+    if (pedido && pedido.id) {
+      setSelectedPedidoId(pedido.id);
+      setActiveSidebarSection('detalle-pedido');
+    }
+  };
+
+  const renderLocalContent = () => {
+    switch (activeSidebarSection) {
+      case 'bandeja':
+        return (
+          <PaginaBandejaDia
+            onSelectPedido={handleOpenDetallePedido}
+            onNavigateEntregaCodigo={() => setActiveSidebarSection('entrega')}
+            onNavigateMiCarta={() => setActiveSidebarSection('mi-carta')}
+            onShowNotification={showToast}
+          />
+        );
+      case 'detalle-pedido':
+        return (
+          <PaginaDetallePedido
+            pedidoId={selectedPedidoId}
+            onBack={() => setActiveSidebarSection('bandeja')}
+            onShowNotification={showToast}
+          />
+        );
+      case 'entrega':
+        return (
+          <PaginaEntregaCodigo
+            onSelectPedido={handleOpenDetallePedido}
+            onShowNotification={showToast}
+          />
+        );
+      case 'resumen':
+        return (
+          <PaginaResumenDia
+            onSelectPedido={handleOpenDetallePedido}
+            onShowNotification={showToast}
+          />
+        );
+      case 'prerrequisitos':
+        return <PrerequisitesShowcase onShowNotification={showToast} />;
+      default:
+        return (
+          <div style={{ maxWidth: '640px', margin: '32px auto' }}>
+            <EmptyState
+              title={`Sección: ${activeSidebarSection.toUpperCase()} (Corresponde a HU-2 / HU-6)`}
+              description="Esta vista forma parte de las historias asignadas a otros integrantes del equipo (HU-2: Local y carta / HU-6: Valoraciones). Las vistas completas de la Historia 5 se encuentran bajo el grupo ATENCIÓN."
+              actionText="Volver a Bandeja del día (HU-5)"
+              onAction={() => setActiveSidebarSection('bandeja')}
+            />
+          </div>
+        );
+    }
+  };
 
   return (
     <div className="app-container">
@@ -67,7 +129,7 @@ function MainLayout() {
         {isSidebarLayout && (
           <Sidebar
             currentSection={activeSidebarSection}
-            onSectionChange={setActiveSidebarSection}
+            onSectionChange={(sec) => setActiveSidebarSection(sec)}
           />
         )}
 
@@ -75,12 +137,17 @@ function MainLayout() {
           className="main-content"
           style={{
             flex: 1,
-            padding: isSidebarLayout ? 'var(--space-6) var(--space-8)' : 'var(--space-6) 0'
+            padding: isSidebarLayout ? '28px 36px' : 'var(--space-6) 0',
+            overflowX: 'hidden'
           }}
         >
-          <div className={isSidebarLayout ? '' : 'contenedor'}>
-            <PrerequisitesShowcase onShowNotification={showToast} />
-          </div>
+          {currentRole === 'local' ? (
+            renderLocalContent()
+          ) : (
+            <div className={isSidebarLayout ? '' : 'contenedor'}>
+              <PrerequisitesShowcase onShowNotification={showToast} />
+            </div>
+          )}
         </main>
       </div>
 
