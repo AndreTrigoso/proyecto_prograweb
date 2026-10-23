@@ -1,4 +1,4 @@
-import IniciarSesion from '../components/IniciarSesion/IniciarSesion.jsx';
+import IniciarSesion from '../components/auth/IniciarSesion/IniciarSesion.jsx';
 
 const PaginaIniciarSesion = () => <IniciarSesion />;
 

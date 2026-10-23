@@ -1,4 +1,4 @@
-import Inicio from '../components/Inicio/Inicio.jsx';
+import Inicio from '../components/auth/Inicio/Inicio.jsx';
 
 const PaginaInicio = () => <Inicio />;
 

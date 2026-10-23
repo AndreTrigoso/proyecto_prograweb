@@ -1,4 +1,4 @@
-import MiCuenta from '../components/MiCuenta/MiCuenta.jsx';
+import MiCuenta from '../components/auth/MiCuenta/MiCuenta.jsx';
 
 const PaginaMiCuenta = () => <MiCuenta />;
 

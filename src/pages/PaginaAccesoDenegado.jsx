@@ -1,4 +1,4 @@
-import AccesoDenegado from '../components/AccesoDenegado/AccesoDenegado.jsx';
+import AccesoDenegado from '../components/auth/AccesoDenegado/AccesoDenegado.jsx';
 
 const PaginaAccesoDenegado = () => <AccesoDenegado />;
 

@@ -1,4 +1,4 @@
-import RecuperarContrasena from '../components/RecuperarContrasena/RecuperarContrasena.jsx';
+import RecuperarContrasena from '../components/auth/RecuperarContrasena/RecuperarContrasena.jsx';
 
 const PaginaRecuperarContrasena = () => <RecuperarContrasena />;
 

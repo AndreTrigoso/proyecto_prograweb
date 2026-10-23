@@ -1,4 +1,4 @@
-import NoEncontrada from '../components/NoEncontrada/NoEncontrada.jsx';
+import NoEncontrada from '../components/auth/NoEncontrada/NoEncontrada.jsx';
 
 const PaginaNoEncontrada = () => <NoEncontrada />;
 

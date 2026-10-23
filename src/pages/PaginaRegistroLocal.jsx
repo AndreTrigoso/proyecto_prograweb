@@ -1,4 +1,4 @@
-import RegistroLocal from '../components/RegistroLocal/RegistroLocal.jsx';
+import RegistroLocal from '../components/auth/RegistroLocal/RegistroLocal.jsx';
 
 const PaginaRegistroLocal = () => <RegistroLocal />;
 

@@ -1,4 +1,4 @@
-import NuevaContrasena from '../components/NuevaContrasena/NuevaContrasena.jsx';
+import NuevaContrasena from '../components/auth/NuevaContrasena/NuevaContrasena.jsx';
 
 const PaginaNuevaContrasena = () => <NuevaContrasena />;
 

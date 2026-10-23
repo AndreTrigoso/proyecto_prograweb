@@ -1,4 +1,4 @@
-import RegistroComensal from '../components/RegistroComensal/RegistroComensal.jsx';
+import RegistroComensal from '../components/auth/RegistroComensal/RegistroComensal.jsx';
 
 const PaginaRegistroComensal = () => <RegistroComensal />;
 
