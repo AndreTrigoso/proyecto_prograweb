@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { DataProvider } from './context/DataContext';
+import { ToastProvider, useToast } from './context/ToastContext';
 import {
   Header,
   ComensalTabs,
   Sidebar,
   CartDrawer,
-  Footer,
-  NotificationToast
+  Footer
 } from './components/common';
-import { PrerequisitesShowcase } from './components/dev/PrerequisitesShowcase';
+
+// HU-1: las pestañas del comensal y las secciones de los paneles ahora son rutas.
+const RUTAS_PESTANAS = {
+  locales: '/locales',
+  pedidos: '/mis-pedidos',
+  calificaciones: '/mis-calificaciones',
+  cuenta: '/cuenta'
+};
 
 const pestanaDeRuta = (pathname) =>
   Object.keys(RUTAS_PESTANAS).find((id) => pathname === RUTAS_PESTANAS[id] || pathname.startsWith(`${RUTAS_PESTANAS[id]}/`));
@@ -31,13 +39,6 @@ function MainLayout() {
   const { pathname } = useLocation();
   const activeComensalTab = pestanaDeRuta(pathname) || 'locales';
 
-  const showToast = (toastData) => {
-    setNotification(toastData);
-    setTimeout(() => {
-      setNotification(null);
-    }, 4500);
-  };
-
   const isSidebarLayout = currentRole === 'local' || currentRole === 'administrador';
 
   return (
@@ -45,34 +46,32 @@ function MainLayout() {
       {/* Cabecera Adaptativa */}
       <Header
         activeTab={activeComensalTab}
-        setActiveTab={setActiveComensalTab}
+        setActiveTab={(id) => navigate(id === 'como-funciona' ? '/#como-funciona' : RUTAS_PESTANAS[id] || '/locales')}
         onShowNotification={showToast}
         onOpenAccount={() => navigate('/cuenta')}
-        onOpenAuthModal={(type) => {
-          showToast({
-            type: 'info',
-            title: `Modal de ${type === 'login' ? 'Inicio de Sesión' : 'Registro'}`,
-            message: 'HU-1 conectará aquí el flujo con validaciones de campos.'
-          });
-        }}
+        onOpenAuthModal={(type) => navigate(type === 'login' ? '/login' : '/registro')}
       />
 
       {/* Pestañas de Comensal si el rol es Comensal */}
       {currentRole === 'comensal' && (
         <ComensalTabs
           activeTab={activeComensalTab}
-          onTabChange={setActiveComensalTab}
-          breadcrumbs={[
-            { label: 'Campus Monterrico' },
-            {
-              label:
-                activeComensalTab === 'locales'
-                  ? 'Cafeterías y concesionarios'
-                  : activeComensalTab === 'pedidos'
-                  ? 'Mis pedidos en curso'
-                  : 'Calificaciones y reseñas'
-            }
-          ]}
+          onTabChange={(id) => navigate(RUTAS_PESTANAS[id])}
+          breadcrumbs={
+            activeComensalTab === 'cuenta'
+              ? []
+              : [
+                  { label: 'Campus Monterrico' },
+                  {
+                    label:
+                      activeComensalTab === 'locales'
+                        ? 'Cafeterías y concesionarios'
+                        : activeComensalTab === 'pedidos'
+                        ? 'Mis pedidos en curso'
+                        : 'Calificaciones y reseñas'
+                  }
+                ]
+          }
         />
       )}
 
@@ -80,8 +79,8 @@ function MainLayout() {
       <div style={{ display: 'flex', flex: 1 }}>
         {isSidebarLayout && (
           <Sidebar
-            currentSection={activeSidebarSection}
-            onSectionChange={setActiveSidebarSection}
+            currentSection={seccionDeRuta(pathname)}
+            onSectionChange={(id) => navigate(rutaDeSeccion(currentRole, id))}
           />
         )}
 
@@ -89,12 +88,10 @@ function MainLayout() {
           className="main-content"
           style={{
             flex: 1,
-            padding: isSidebarLayout ? 'var(--space-6) var(--space-8)' : 'var(--space-6) 0'
+            padding: isSidebarLayout ? 'var(--space-6) var(--space-8)' : 0
           }}
-
-
         >
-
+          {/* Cada pantalla de HU-1 maneja su propio ancho para poder usar fondos a sangre */}
           <Outlet />
         </main>
       </div>
@@ -108,12 +105,6 @@ function MainLayout() {
             message: 'Redirigiendo a selección de franja de recojo y generación de código PED-XXXX.'
           });
         }}
-      />
-
-      {/* Notificación Toast para feedback de operaciones */}
-      <NotificationToast
-        notification={notification}
-        onClose={() => setNotification(null)}
       />
 
       {/* Pie de página oficial */}
