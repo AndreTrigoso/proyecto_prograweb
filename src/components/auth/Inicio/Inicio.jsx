@@ -67,7 +67,7 @@ export default function Inicio() {
               {locales.length} locales en el campus · {publicados} productos publicados{desde && ` · Recojo desde las ${desde}`}
             </p>
           </div>
-          <ImagenProvisional className="hero__foto" label="foto hero · mostrador de cafetería del campus" />
+          <ImagenProvisional className="hero__foto" label="foto hero · mostrador de cafetería del campus" src="/imagenes/cafeteria.jpg" alt="Mostrador de una cafetería del campus" />
         </div>
       </section>
 
