@@ -12,7 +12,7 @@ import {
   Footer
 } from './components/common';
 
-// HU-1: las pestañas del comensal y las secciones de los paneles ahora son rutas.
+
 const RUTAS_PESTANAS = {
   locales: '/locales',
   pedidos: '/mis-pedidos',
@@ -91,7 +91,7 @@ function MainLayout() {
             padding: isSidebarLayout ? 'var(--space-6) var(--space-8)' : 0
           }}
         >
-          {/* Cada pantalla de HU-1 maneja su propio ancho para poder usar fondos a sangre */}
+          {/* Cada pantalla maneja su propio ancho para poder usar fondos a sangre */}
           <Outlet />
         </main>
       </div>
@@ -102,7 +102,8 @@ function MainLayout() {
           showToast({
             type: 'success',
             title: 'Confirmación de Pedido (HU-4)',
-            message: 'Redirigiendo a selección de franja de recojo y generación de código PED-XXXX.'
+            message:
+              'Redirigiendo a selección de franja de recojo y generación de código PED-XXXX.'
           });
         }}
       />

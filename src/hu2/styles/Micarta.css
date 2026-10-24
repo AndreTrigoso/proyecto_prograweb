@@ -1,0 +1,572 @@
+
+.hu2-carta {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #261915;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.hu2-carta h1,
+.hu2-carta h2,
+.hu2-carta h3 {
+  font-family: "Poppins", sans-serif;
+  color: #261915;
+}
+
+.hu2-carta-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.hu2-carta-encabezado h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 600;
+}
+
+.hu2-carta-encabezado p {
+  margin: 0;
+  color: #7C6960;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.hu2-carta-distribucion {
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.hu2-carta-panel {
+  padding: 20px;
+  background: #FFFFFF;
+  border: 1px solid #EFE2DC;
+  border-radius: 16px;
+}
+
+.hu2-carta-categorias {
+  padding: 0 0 14px;
+  overflow: hidden;
+}
+
+.hu2-carta-categorias-encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  margin: 0;
+  border-bottom: 1px solid #EFE2DC;
+}
+
+.hu2-carta-categorias-encabezado h2 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.hu2-carta-agregar {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  background: #FCEAE7;
+  color: #D6402F;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.hu2-carta-categoria-fila {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 6px;
+  border-bottom: 1px solid #EFE2DC;
+}
+
+.hu2-carta-categoria {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: #261915;
+  text-align: left;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  cursor: pointer;
+}
+
+.hu2-carta-categoria:hover {
+  background: #FFFBF8;
+}
+
+.hu2-carta-categoria.activa {
+  background: #FCEAE7;
+  color: #AB3024;
+  font-weight: 600;
+}
+
+.hu2-carta-categoria span:first-child {
+  overflow-wrap: anywhere;
+}
+
+.hu2-carta-categoria span:last-child {
+  flex-shrink: 0;
+  font-size: 12px;
+}
+
+.hu2-carta-icono {
+  flex-shrink: 0;
+  width: 26px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #7C6960;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.hu2-carta-icono:hover {
+  color: #D6402F;
+}
+
+.hu2-carta-icono.peligro:hover {
+  color: #B4322B;
+}
+
+.hu2-carta-nueva-categoria {
+  display: block;
+  width: calc(100% - 24px);
+  min-height: 44px;
+  margin: 14px auto 0;
+  padding: 10px;
+  border: 1px dashed #D6402F;
+  border-radius: 12px;
+  background: #FFFFFF;
+  color: #D6402F;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hu2-carta-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 12px 0;
+}
+
+.hu2-carta-formulario h3 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.hu2-carta-formulario label,
+.hu2-carta-campo label {
+  color: #7C6960;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.hu2-carta-formulario input,
+.hu2-carta-campo input,
+.hu2-carta-campo select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #EFE2DC;
+  border-radius: 12px;
+  background: #FFFFFF;
+  color: #261915;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+}
+
+.hu2-carta-formulario input:focus,
+.hu2-carta-campo input:focus,
+.hu2-carta-campo select:focus {
+  outline: 2px solid #D6402F;
+  outline-offset: 1px;
+}
+
+.hu2-carta-formulario-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hu2-carta-formulario-acciones button {
+  flex: 1;
+  padding: 10px;
+}
+
+.hu2-carta-error {
+  margin: 0;
+  color: #B4322B;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.hu2-carta-principal {
+  min-width: 0;
+}
+
+.hu2-carta-filtros {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 185px;
+  align-items: end;
+  gap: 12px;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.hu2-carta-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.hu2-carta-listado-encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 24px 0 16px;
+}
+
+.hu2-carta-listado-encabezado h2 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.hu2-carta-listado-encabezado p {
+  margin: 0;
+  color: #7C6960;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.hu2-carta-limpiar {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: #D6402F;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hu2-carta-productos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hu2-carta-producto {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 12px;
+  background: #FFFFFF;
+  border: 1px solid #EFE2DC;
+  border-radius: 16px;
+}
+
+.hu2-carta-producto-imagen,
+.hu2-carta-sin-imagen {
+  display: block;
+  width: 72px;
+  height: 72px;
+  flex: 0 0 72px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.hu2-carta-sin-imagen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FCEAE7;
+  color: #7C6960;
+  text-align: center;
+  font-size: 12px;
+}
+
+.hu2-carta-producto-contenido {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-areas:
+    "nombre etiquetas precio"
+    "descripcion etiquetas acciones"
+    "opciones opciones opciones";
+  align-items: center;
+  gap: 4px 14px;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+}
+
+.hu2-carta-producto h3 {
+  grid-area: nombre;
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.hu2-carta-descripcion {
+  grid-area: descripcion;
+  min-height: 0;
+  margin: 0;
+  color: #7C6960;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.hu2-carta-etiquetas {
+  grid-area: etiquetas;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+}
+
+.hu2-carta-estado,
+.hu2-carta-etiqueta-categoria {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.hu2-carta-estado.estado-disponible {
+  background: #EAF4E5;
+  color: #356B17;
+}
+
+.hu2-carta-estado.estado-agotado_dia {
+  background: #FFF1D8;
+  color: #8A5D1B;
+}
+
+.hu2-carta-estado.estado-retirado {
+  background: #FCEAE7;
+  color: #B4322B;
+}
+
+.hu2-carta-etiqueta-categoria {
+  display: none;
+}
+
+.hu2-carta-producto-detalles {
+  grid-area: precio;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.hu2-carta-producto-detalles strong {
+  color: #261915;
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.hu2-carta-producto-detalles span {
+  display: none;
+}
+
+.hu2-carta-producto-acciones {
+  grid-area: acciones;
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.hu2-carta-producto-acciones button {
+  flex: 0 0 auto;
+  padding: 8px;
+  min-height: 44px;
+  background: transparent;
+  border: none;
+  color: #D6402F;
+}
+
+.hu2-carta-producto-acciones .hu2-carta-btn-peligro {
+  color: #B4322B;
+}
+
+.hu2-carta-opciones {
+  grid-area: opciones;
+  min-height: 32px;
+  margin: 0;
+  padding: 4px 0;
+  background: transparent;
+  border: none;
+  color: #D6402F;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hu2-carta-producto.agotado {
+  background: #FFFBF8;
+}
+
+.hu2-carta-producto.agotado .hu2-carta-producto-imagen,
+.hu2-carta-producto.agotado .hu2-carta-sin-imagen {
+  opacity: 0.5;
+}
+
+.hu2-carta-btn-primario,
+.hu2-carta-btn-secundario,
+.hu2-carta-btn-peligro {
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hu2-carta-btn-primario {
+  border: 1px solid #D6402F;
+  background: #D6402F;
+  color: #FFFFFF;
+}
+
+.hu2-carta-btn-primario:hover {
+  background: #AB3024;
+}
+
+.hu2-carta-btn-secundario {
+  border: 1px solid #EFE2DC;
+  background: #FFFFFF;
+  color: #261915;
+}
+
+.hu2-carta-btn-peligro {
+  border: 1px solid #E8A49B;
+  background: #FFFFFF;
+  color: #B4322B;
+}
+
+.hu2-carta-mensaje {
+  margin-bottom: 20px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.hu2-carta-mensaje.exito {
+  background: #EAF4E5;
+  border: 1px solid #B9D6AA;
+  color: #356B17;
+}
+
+.hu2-carta-mensaje.error {
+  background: #FCEAE7;
+  border: 1px solid #E8A49B;
+  color: #B4322B;
+}
+
+.hu2-carta-vacio {
+  padding: 48px 20px;
+  text-align: center;
+}
+
+.hu2-carta-vacio h3 {
+  margin: 0 0 12px;
+  font-size: 20px;
+}
+
+.hu2-carta-vacio p {
+  margin-bottom: 20px;
+  color: #7C6960;
+  font-size: 15px;
+}
+
+.hu2-carta button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1050px) {
+  .hu2-carta-distribucion {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .hu2-carta-filtros {
+    grid-template-columns: 1fr;
+  }
+
+  .hu2-carta-producto-contenido {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "nombre precio"
+      "descripcion descripcion"
+      "etiquetas acciones"
+      "opciones opciones";
+  }
+}
+
+@media (max-width: 450px) {
+  .hu2-carta-producto {
+    align-items: flex-start;
+  }
+
+  .hu2-carta-producto-imagen,
+  .hu2-carta-sin-imagen {
+    width: 56px;
+    height: 56px;
+    flex-basis: 56px;
+  }
+
+  .hu2-carta-producto-detalles strong {
+    font-size: 15px;
+  }
+}

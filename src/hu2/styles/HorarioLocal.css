@@ -1,0 +1,400 @@
+
+.hu2-horario {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 2.4fr) minmax(250px, 1fr);
+  gap: 20px;
+  align-items: start;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  color: #261915;
+}
+
+.hu2-horario h1,
+.hu2-horario h2,
+.hu2-horario h3 {
+  font-family: "Poppins", sans-serif;
+  color: #261915;
+}
+
+.hu2-horario-encabezado {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.hu2-horario-encabezado h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 600;
+}
+
+.hu2-horario-encabezado p {
+  margin: 0;
+  color: #7C6960;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.hu2-horario-resumen {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #FCEAE7;
+  color: #AB3024;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hu2-horario-panel {
+  min-width: 0;
+  padding: 20px;
+  background: #FFFFFF;
+  border: 1px solid #EFE2DC;
+  border-radius: 16px;
+}
+
+.hu2-horario-panel-encabezado {
+  margin-bottom: 16px;
+}
+
+.hu2-horario-panel-encabezado h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.hu2-horario-panel-encabezado p {
+  margin: 0;
+  color: #7C6960;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.hu2-horario-tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.hu2-horario-tabla {
+  width: 100%;
+  min-width: 540px;
+  border-collapse: collapse;
+}
+
+.hu2-horario-tabla th {
+  padding: 10px 8px;
+  border-bottom: 1px solid #EFE2DC;
+  color: #7C6960;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.hu2-horario-tabla td {
+  padding: 8px;
+  border-bottom: 1px solid #EFE2DC;
+  vertical-align: middle;
+  color: #261915;
+}
+
+.hu2-horario-tabla tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.hu2-horario-nombre-dia {
+  min-width: 95px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.hu2-horario-interruptor {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.hu2-horario-interruptor input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.hu2-horario-slider {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #CFC4BF;
+  border-radius: 999px;
+  transition: background 0.2s;
+  pointer-events: none;
+}
+
+.hu2-horario-slider::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  transition: transform 0.2s;
+}
+
+.hu2-horario-interruptor input:checked
+  + .hu2-horario-slider {
+  background: #5B9B2E;
+}
+
+.hu2-horario-interruptor input:checked
+  + .hu2-horario-slider::before {
+  transform: translateX(20px);
+}
+
+.hu2-horario-interruptor input:focus-visible
+  + .hu2-horario-slider {
+  outline: 2px solid #D6402F;
+  outline-offset: 3px;
+}
+
+.hu2-horario-input {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px;
+  border: 1px solid #EFE2DC;
+  border-radius: 12px;
+  background: #FFFFFF;
+  color: #261915;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+}
+
+.hu2-horario-input:focus {
+  outline: 2px solid #D6402F;
+  outline-offset: 1px;
+}
+
+.hu2-horario-input:disabled {
+  background: #F5F0ED;
+  color: #7C6960;
+  cursor: not-allowed;
+}
+
+.hu2-horario-etiqueta {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.hu2-horario-etiqueta.abierto {
+  background: #EAF4E5;
+  color: #356B17;
+}
+
+.hu2-horario-etiqueta.cerrado {
+  background: #F5F0ED;
+  color: #7C6960;
+}
+
+.hu2-horario-errores {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: #FCEAE7;
+  border: 1px solid #E8A49B;
+  border-radius: 12px;
+}
+
+.hu2-horario-errores p {
+  margin: 6px 0;
+  color: #B4322B;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.hu2-horario-errores strong {
+  color: #B4322B;
+}
+
+.hu2-horario-acciones {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #EFE2DC;
+}
+
+.hu2-horario-btn-primario,
+.hu2-horario-btn-secundario {
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hu2-horario-btn-primario {
+  background: #D6402F;
+  color: #FFFFFF;
+  border: 1px solid #D6402F;
+}
+
+.hu2-horario-btn-primario:hover:not(:disabled) {
+  background: #AB3024;
+}
+
+.hu2-horario-btn-secundario {
+  background: #FFFFFF;
+  color: #261915;
+  border: 1px solid #EFE2DC;
+}
+
+.hu2-horario-btn-secundario:hover:not(:disabled) {
+  background: #FFFBF8;
+}
+
+.hu2-horario-acciones button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.hu2-horario-mensaje {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.hu2-horario-mensaje.exito {
+  background: #EAF4E5;
+  border: 1px solid #B9D6AA;
+  color: #356B17;
+}
+
+.hu2-horario-mensaje.error {
+  background: #FCEAE7;
+  border: 1px solid #E8A49B;
+  color: #B4322B;
+}
+
+.hu2-horario-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.hu2-horario-campo label {
+  color: #7C6960;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.hu2-horario-campo select {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #EFE2DC;
+  border-radius: 12px;
+  background: #FFFFFF;
+  color: #261915;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+}
+
+.hu2-horario-campo select:focus {
+  outline: 2px solid #D6402F;
+  outline-offset: 1px;
+}
+
+.hu2-horario-franjas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.hu2-horario-franja {
+  padding: 10px 4px;
+  text-align: center;
+  border: 1px solid #EFE2DC;
+  border-radius: 12px;
+  background: #FFFFFF;
+  color: #261915;
+  font-size: 12px;
+  line-height: 18px;
+  overflow-wrap: anywhere;
+}
+
+.hu2-horario-sin-franjas {
+  margin-top: 20px;
+  padding: 28px 16px;
+  background: #FFFBF8;
+  border: 1px dashed #EFE2DC;
+  border-radius: 12px;
+  color: #7C6960;
+  text-align: center;
+  font-size: 13px;
+}
+
+.hu2-horario-nota {
+  margin: 20px 0 0;
+  color: #7C6960;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+@media (max-width: 1050px) {
+  .hu2-horario {
+    grid-template-columns: 1fr;
+  }
+
+  .hu2-horario-encabezado {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 650px) {
+  .hu2-horario-panel {
+    padding: 16px;
+  }
+
+  .hu2-horario-franjas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hu2-horario-acciones {
+    flex-direction: column;
+  }
+
+  .hu2-horario-acciones button {
+    width: 100%;
+  }
+}
