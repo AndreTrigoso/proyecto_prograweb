@@ -1,0 +1,11 @@
+.estado { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); text-align: center; }
+.estado__icono { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: var(--color-primary-soft); color: var(--color-primary); font: 600 24px/1 var(--font-family-title); }
+.estado__icono--ok { background: #EDF6E4; color: var(--color-success); }
+.estado__etiqueta { font: var(--font-label); letter-spacing: .1em; text-transform: uppercase; color: var(--color-primary); }
+.estado__titulo { font: 600 32px/40px var(--font-family-title); max-width: 520px; }
+.estado__texto { max-width: 520px; color: var(--color-text-muted); }
+.estado__acciones { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); margin-top: var(--space-2); }
+
+@media (max-width: 600px) {
+  .estado__titulo { font-size: 26px; line-height: 34px; }
+}

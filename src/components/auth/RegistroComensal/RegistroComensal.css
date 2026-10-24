@@ -1,0 +1,10 @@
+.registro { display: grid; grid-template-columns: minmax(0, 1fr) 440px; align-items: start; gap: var(--space-6); }
+.registro__lateral { padding: var(--space-6); border-radius: var(--radius-lg); background: var(--color-primary-soft); }
+.registro__lateral h2 { margin-bottom: var(--space-3); font: 600 16px/24px var(--font-family-title); }
+.registro__lateral ul { display: flex; flex-direction: column; gap: var(--space-2); margin: 0 0 var(--space-4); padding: 0; list-style: none; font: var(--font-caption); }
+.registro__lateral li::before { content: '✓'; margin-right: var(--space-2); color: var(--color-accent); font-weight: 700; }
+.registro__acciones { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-5); }
+
+@media (max-width: 960px) {
+  .registro { grid-template-columns: 1fr; }
+}

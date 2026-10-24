@@ -1,0 +1,7 @@
+.cuenta { display: grid; grid-template-columns: minmax(0, 1fr) 380px; align-items: start; gap: var(--space-6); }
+.cuenta__guardado { margin: var(--space-4) 0 0; }
+.cuenta__nota { margin: var(--space-4) 0 0; }
+
+@media (max-width: 960px) {
+  .cuenta { grid-template-columns: 1fr; }
+}

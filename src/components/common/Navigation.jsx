@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { Store, Clock, Star, ChevronRight } from 'lucide-react';
+import { Store, Clock, Star, User, ChevronRight } from 'lucide-react';
 
 /**
  * Componente común: Navegación para COMENSAL
@@ -12,7 +12,8 @@ export function ComensalTabs({ activeTab, onTabChange, breadcrumbs = [] }) {
   const tabs = [
     { id: 'locales', label: 'Locales del campus', icon: Store },
     { id: 'pedidos', label: 'Mis pedidos', icon: Clock },
-    { id: 'calificaciones', label: 'Mis calificaciones', icon: Star }
+    { id: 'calificaciones', label: 'Mis calificaciones', icon: Star },
+    { id: 'cuenta', label: 'Mi cuenta', icon: User }
   ];
 
   return (

@@ -1,0 +1,4 @@
+.migas { display: flex; align-items: center; gap: 6px; margin-bottom: var(--space-3); font-size: 12px; line-height: 16px; color: var(--color-text-muted); }
+.migas a { color: var(--color-text-muted); font-weight: 400; }
+.migas a:hover { color: var(--color-primary); }
+.migas strong { color: var(--color-text); font-weight: 600; }

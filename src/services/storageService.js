@@ -26,9 +26,6 @@ export function initializeStorage(forceReset = false) {
     localStorage.setItem(STORAGE_KEYS.VALORACIONES, JSON.stringify(initialSeeds.valoraciones || []));
     localStorage.setItem(STORAGE_KEYS.INIT_FLAG, 'true');
 
-    // Por defecto iniciar en el rol Local (Cafetería Central) para evaluar HU-5 directamente
-    const defaultLocalUser = (initialSeeds.usuarios || []).find(u => u.id === 'usr-local-central') || initialSeeds.usuarios[0];
-    localStorage.setItem(STORAGE_KEYS.SESSION, JSON.stringify(defaultLocalUser));
   }
 }
 
@@ -127,6 +124,14 @@ export const localesService = {
   getAll: () => getCollection(STORAGE_KEYS.LOCALES),
   getById: (id) => getCollection(STORAGE_KEYS.LOCALES).find(l => l.id === id) || null,
 
+  create: (nuevoLocal) => {
+    const locales = getCollection(STORAGE_KEYS.LOCALES);
+    const local = { ...nuevoLocal, id: nuevoLocal.id || `loc-${Date.now()}` };
+    locales.push(local);
+    saveCollection(STORAGE_KEYS.LOCALES, locales);
+    return local;
+  },
+
   update: (id, updates) => {
     const locales = getCollection(STORAGE_KEYS.LOCALES);
     const index = locales.findIndex(l => l.id === id);
@@ -142,13 +147,133 @@ export const localesService = {
       motivoSuspension: nuevoEstado === 'suspendido' ? motivo : null
     });
   }
+
 };
+
+
 
 /* ==================== CATEGORÍAS Y PRODUCTOS ==================== */
 export const productosService = {
   getCategorias: (localId) => {
     const cats = getCollection(STORAGE_KEYS.CATEGORIAS);
     return localId ? cats.filter(c => c.localId === localId).sort((a, b) => a.orden - b.orden) : cats;
+  },
+
+  crearCategoria: (localId, nombre) => {
+    const categorias = getCollection(STORAGE_KEYS.CATEGORIAS);
+
+    const existentes = categorias.filter(
+      categoria => categoria.localId === localId
+    );
+
+    const nombreNormalizado = nombre.trim();
+
+    if (!nombreNormalizado) {
+      throw new Error("El nombre de la categoría es obligatorio.");
+    }
+
+    const duplicada = existentes.some(
+      categoria =>
+        categoria.nombre.trim().toLowerCase() ===
+        nombreNormalizado.toLowerCase()
+    );
+
+    if (duplicada) {
+      throw new Error("Ya existe una categoría con ese nombre.");
+    }
+
+    const siguienteOrden =
+      Math.max(0, ...existentes.map(c => Number(c.orden) || 0)) + 1;
+
+    const nuevaCategoria = {
+      id: `cat-${crypto.randomUUID()}`,
+      localId,
+      nombre: nombreNormalizado,
+      orden: siguienteOrden
+    };
+
+    categorias.push(nuevaCategoria);
+
+    saveCollection(STORAGE_KEYS.CATEGORIAS, categorias);
+
+    return nuevaCategoria;
+  },
+
+  editarCategoria: (localId, categoriaId, nombre) => {
+    const categorias = getCollection(STORAGE_KEYS.CATEGORIAS);
+
+    const indice = categorias.findIndex(
+      categoria =>
+        categoria.id === categoriaId &&
+        categoria.localId === localId
+    );
+
+    if (indice === -1) {
+      throw new Error("Categoría no encontrada.");
+    }
+
+    const nombreNormalizado = nombre.trim();
+
+    if (!nombreNormalizado) {
+      throw new Error("El nombre de la categoría es obligatorio.");
+    }
+
+    const duplicada = categorias.some(
+      categoria =>
+        categoria.localId === localId &&
+        categoria.id !== categoriaId &&
+        categoria.nombre.trim().toLowerCase() ===
+          nombreNormalizado.toLowerCase()
+    );
+
+    if (duplicada) {
+      throw new Error("Ya existe una categoría con ese nombre.");
+    }
+
+    categorias[indice] = {
+      ...categorias[indice],
+      nombre: nombreNormalizado
+    };
+
+    saveCollection(STORAGE_KEYS.CATEGORIAS, categorias);
+
+    return categorias[indice];
+  },
+
+  eliminarCategoria: (localId, categoriaId) => {
+    const categorias = getCollection(STORAGE_KEYS.CATEGORIAS);
+
+    const existe = categorias.some(
+      categoria =>
+        categoria.id === categoriaId &&
+        categoria.localId === localId
+    );
+
+    if (!existe) {
+      throw new Error("Categoría no encontrada.");
+    }
+
+    const tieneProductos = getCollection(
+      STORAGE_KEYS.PRODUCTOS
+    ).some(
+      producto =>
+        producto.localId === localId &&
+        producto.categoriaId === categoriaId
+    );
+
+    if (tieneProductos) {
+      throw new Error(
+        "No puedes eliminar una categoría que contiene productos."
+      );
+    }
+
+    const restantes = categorias.filter(
+      categoria => categoria.id !== categoriaId
+    );
+
+    saveCollection(STORAGE_KEYS.CATEGORIAS, restantes);
+
+    return true;
   },
 
   getAll: () => getCollection(STORAGE_KEYS.PRODUCTOS),
