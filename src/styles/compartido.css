@@ -1,0 +1,40 @@
+/* =====================================================================
+   HU-1 · Patrones compartidos por varias pantallas (tarjetas, páginas y
+   disposición de formularios). Usa los tokens de design-tokens.css.
+   Lo específico de cada componente vive en su propio .css
+   ===================================================================== */
+
+/* ---------- Estructura de página ---------- */
+.pagina { width: 100%; max-width: var(--max-width-content); margin: 0 auto; padding: var(--space-6) var(--space-6) var(--space-12); }
+.pagina__titulo { font: var(--font-title-screen); margin-bottom: var(--space-4); }
+.centrado { display: grid; place-items: center; padding: 72px var(--space-6); min-height: 520px; }
+.estrecho { width: 100%; max-width: 560px; }
+
+/* ---------- Tarjetas ---------- */
+.tarjeta-auth { width: 100%; max-width: 500px; padding: var(--space-8); }
+.tarjeta-registro { padding: var(--space-8); }
+.tarjeta-registro--centrada { width: 100%; max-width: 480px; padding: var(--space-8); text-align: center; }
+.tarjeta__titulo { font: 600 24px/32px var(--font-family-title); margin-bottom: var(--space-1); }
+.tarjeta__titulo--md { font: var(--font-title-section); margin-bottom: var(--space-4); }
+.tarjeta__intro { font: var(--font-caption); color: var(--color-text-muted); margin-bottom: var(--space-5); }
+
+/* ---------- Disposición de formularios ---------- */
+.formulario__fila { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--space-4); }
+.formulario__completo { grid-column: 1 / -1; }
+.formulario__entre { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); margin: var(--space-1) 0 var(--space-4); font-size: 13px; }
+.formulario__acciones { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-2); }
+.formulario__acciones--fin { justify-content: flex-end; }
+.formulario__pie { text-align: center; margin-top: var(--space-4); font: var(--font-caption); color: var(--color-text-muted); }
+.formulario__pie a { font-weight: 600; }
+.formulario__nota { font: var(--font-caption); color: var(--color-text-muted); }
+.enlace { color: var(--color-primary); font-weight: 600; }
+.enlace:hover { text-decoration: underline; }
+.apagado { color: var(--color-text-muted); }
+
+@media (max-width: 960px) {
+  .pagina { padding: var(--space-4) var(--space-4) var(--space-10); }
+}
+@media (max-width: 600px) {
+  .formulario__fila { grid-template-columns: 1fr; }
+  .tarjeta-auth, .tarjeta-registro, .tarjeta-registro--centrada { padding: var(--space-5); }
+}
