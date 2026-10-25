@@ -5,7 +5,7 @@ import { useHU2 } from "./useHU2";
 import { productosService } from "../services/storageService";
 import FormularioProducto from "./FormularioProducto";
 import OpcionesProducto from "./OpcionesProducto";
-import "./styles/MiCarta.css";
+import "./styles/Micarta.css";
 
 export default function MiCarta() {
   const { local, localId, categoriasLocal, productosLocal } = useHU2();
