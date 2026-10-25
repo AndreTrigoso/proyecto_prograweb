@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useHU2 } from "./useHU2";
-import { productosService } from "../services/storageService";
+import { productosService } from "../../services/storageService";
 import "./styles/OpcionesProducto.css";
 
 const crearGrupo = () => ({

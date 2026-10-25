@@ -17,11 +17,11 @@ import PaginaMiCuenta from './pages/PaginaMiCuenta.jsx';
 import PaginaAccesoDenegado from './pages/PaginaAccesoDenegado.jsx';
 import PaginaNoEncontrada from './pages/PaginaNoEncontrada.jsx';
 import PaginaProximamente from './pages/PaginaProximamente.jsx';
-import MiCarta from './hu2/MiCarta.jsx';
-import GestionOpciones from './hu2/GestionOpciones.jsx';
-import DisponibilidadLocal from './hu2/DisponibilidadLocal.jsx';
-import PerfilLocal from './hu2/PerfilLocal.jsx';
-import HorarioLocal from './hu2/HorarioLocal.jsx';
+import PaginaMiCarta from './pages/PaginaMiCarta.jsx';
+import PaginaOpcionesLocal from './pages/PaginaOpcionesLocal.jsx';
+import PaginaDisponibilidadLocal from './pages/PaginaDisponibilidadLocal.jsx';
+import PaginaPerfilLocal from './pages/PaginaPerfilLocal.jsx';
+import PaginaHorarioLocal from './pages/PaginaHorarioLocal.jsx';
 import './styles/compartido.css';
 
 
@@ -88,11 +88,11 @@ const router = createBrowserRouter([
           proximamente('local/bandeja', 'Bandeja del día', 'HU-5 (Bandeja del local)'),
           proximamente('local/entrega', 'Entrega contra código', 'HU-5 (Bandeja del local)'),
           proximamente('local/resumen', 'Resumen del día', 'HU-5 (Bandeja del local)'),
-          { path: 'local/mi-carta', element: <MiCarta /> },
-          { path: 'local/opciones', element: <GestionOpciones /> },
-          { path: 'local/agotados', element: <DisponibilidadLocal /> },
-          { path: 'local/perfil', element: <PerfilLocal /> },
-          { path: 'local/horario', element: <HorarioLocal /> },
+          { path: 'local/mi-carta', element: <PaginaMiCarta /> },
+          { path: 'local/opciones', element: <PaginaOpcionesLocal /> },
+          { path: 'local/agotados', element: <PaginaDisponibilidadLocal /> },
+          { path: 'local/perfil', element: <PaginaPerfilLocal /> },
+          { path: 'local/horario', element: <PaginaHorarioLocal /> },
           proximamente('local/resenas', 'Reseñas', 'HU-6 (Valoraciones)')
         ]
       },
