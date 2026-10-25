@@ -1,0 +1,45 @@
+/* HU-4 · 4.4 Detalle con avance */
+.hu4-detalle__cabecera { align-items: center; }
+
+/* Línea de cuatro pasos */
+.hu4-avance { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5) var(--space-5) var(--space-4); margin-bottom: var(--space-4); }
+.hu4-avance--listo { border: 1.5px solid var(--color-success); }
+.hu4-paso { position: relative; display: flex; flex-direction: column; gap: 2px; padding-right: var(--space-3); }
+.hu4-paso::after { content: ''; position: absolute; top: 11px; left: 26px; right: 4px; height: 3px; border-radius: 2px; background: var(--color-border); }
+.hu4-paso:last-child::after { display: none; }
+.hu4-paso--hecho::after { background: var(--color-success); }
+.hu4-paso__punto { position: relative; z-index: 1; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font: 600 11px var(--font-family-body); border: 1.5px solid var(--color-border); background: var(--color-surface); color: var(--color-text-muted); margin-bottom: var(--space-2); }
+.hu4-paso strong { font: 600 14px/20px var(--font-family-body); color: var(--color-text-muted); }
+.hu4-paso small { font: var(--font-caption); font-size: 12px; color: var(--color-text-muted); }
+.hu4-paso--hecho .hu4-paso__punto { background: var(--color-success); border-color: var(--color-success); color: #fff; }
+.hu4-paso--hecho strong { color: var(--color-text); }
+.hu4-paso--actual .hu4-paso__punto { background: var(--color-warning); border-color: var(--color-warning); color: #fff; }
+.hu4-paso--actual strong, .hu4-paso--actual small { color: #8A5A12; }
+.hu4-paso--actual.hu4-paso--recibido .hu4-paso__punto { background: var(--color-info); border-color: var(--color-info); }
+.hu4-paso--actual.hu4-paso--recibido strong, .hu4-paso--actual.hu4-paso--recibido small { color: var(--color-info); }
+.hu4-paso--actual.hu4-paso--listo .hu4-paso__punto { background: var(--color-success); border-color: var(--color-success); }
+.hu4-paso--actual.hu4-paso--listo strong, .hu4-paso--actual.hu4-paso--listo small { color: #3F7420; }
+
+/* Código + ítems */
+.hu4-detalle { display: grid; grid-template-columns: 255px 1fr; gap: var(--space-4); align-items: start; }
+.hu4-detalle--listo { grid-template-columns: 1fr 1fr; }
+.hu4-detalle__lado { display: flex; flex-direction: column; gap: var(--space-3); }
+.hu4-tarjeta { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); font: var(--font-caption); }
+.hu4-detalle .hu4-codigo strong { font-size: 36px; line-height: 44px; }
+.hu4-detalle--listo .hu4-codigo strong { font-size: 48px; line-height: 56px; }
+
+/* Pieza suelta: rechazado / cancelado / no recogido */
+.hu4-cerrado { max-width: 560px; display: flex; flex-direction: column; gap: var(--space-3); }
+.hu4-cerrado .hu4-items { border-bottom: 0; padding-bottom: 0; }
+.hu4-cerrado .hu3-ayuda { margin-top: 0; }
+.hu4-motivo { background: var(--color-primary-soft); border: 1px solid #F6C9C2; border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); color: var(--color-danger); }
+.hu4-motivo small { font: var(--font-label); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+.hu4-motivo p { font: var(--font-caption); font-size: 14px; }
+
+@media (max-width: 900px) {
+  .hu4-detalle, .hu4-detalle--listo { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .hu4-avance { grid-template-columns: 1fr 1fr; row-gap: var(--space-4); }
+  .hu4-paso:nth-child(2)::after { display: none; }
+}

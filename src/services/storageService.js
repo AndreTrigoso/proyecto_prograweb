@@ -344,8 +344,15 @@ export const pedidosService = {
 
   create: (pedidoData) => {
     const pedidos = getCollection(STORAGE_KEYS.PEDIDOS);
-    const codigoAleatorio = `PED-${Math.floor(1000 + Math.random() * 9000)}`;
+    // Código público único entre los pedidos existentes (HU-4).
+    const usados = new Set(pedidos.map(p => p.codigoPedido));
+    let codigoAleatorio;
+    do {
+      codigoAleatorio = `PED-${Math.floor(1000 + Math.random() * 9000)}`;
+    } while (usados.has(codigoAleatorio));
     const horaActual = getCurrentFormattedTime();
+    const ahora = new Date();
+    const fechaHoy = `${String(ahora.getDate()).padStart(2, '0')}/${String(ahora.getMonth() + 1).padStart(2, '0')}/${ahora.getFullYear()}`;
     const nuevoPedido = {
       ...pedidoData,
       id: `ped-${Date.now()}`,
@@ -354,10 +361,10 @@ export const pedidosService = {
       horaPreparacion: null,
       horaListo: null,
       horaEntrega: null,
-      fechaPedido: '15/09/2026',
-      fechaHoraCreacion: new Date().toISOString(),
+      fechaPedido: pedidoData.fechaPedido || fechaHoy, // antes quedaba fija en '15/09/2026'
+      fechaHoraCreacion: ahora.toISOString(),
       estado: 'recibido',
-      minutosRestantes: 20,
+      minutosRestantes: pedidoData.minutosRestantes ?? 20,
       vencido: false,
       vencidoMinutos: 0,
       categoriaRechazo: null,

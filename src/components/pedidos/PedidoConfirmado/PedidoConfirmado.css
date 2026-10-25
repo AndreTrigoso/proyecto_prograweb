@@ -1,0 +1,18 @@
+/* HU-4 · 4.2 Pedido confirmado */
+.hu4-confirmado { max-width: 900px; margin: 0 auto; }
+.hu4-confirmado__cabecera { text-align: center; margin-bottom: var(--space-5); }
+.hu4-confirmado__check { width: 48px; height: 48px; margin: 0 auto var(--space-3); border-radius: 50%; display: grid; place-items: center; background: var(--color-state-listo-bg); color: var(--color-success); }
+.hu4-confirmado__cabecera h1 { font: var(--font-title-screen); margin-bottom: var(--space-1); }
+.hu4-confirmado__cabecera p { font: var(--font-caption); font-size: 14px; color: var(--color-text-muted); }
+
+.hu4-datos { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); max-width: 760px; margin: 0 auto var(--space-4); }
+.hu4-datos > div { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-3); text-align: center; }
+.hu4-datos dt { font: var(--font-label); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: var(--space-1); }
+.hu4-datos dd { font: var(--font-price); font-size: 16px; }
+
+.hu4-nota { max-width: 600px; margin: 0 auto var(--space-5); text-align: center; background: var(--color-primary-soft); color: var(--color-text); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); font: var(--font-caption); }
+
+@media (max-width: 700px) {
+  .hu4-datos { grid-template-columns: repeat(2, 1fr); }
+  .hu4-codigo--centrado strong { font-size: 40px; line-height: 48px; }
+}
