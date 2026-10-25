@@ -22,6 +22,10 @@ import PaginaOpcionesLocal from './pages/PaginaOpcionesLocal.jsx';
 import PaginaDisponibilidadLocal from './pages/PaginaDisponibilidadLocal.jsx';
 import PaginaPerfilLocal from './pages/PaginaPerfilLocal.jsx';
 import PaginaHorarioLocal from './pages/PaginaHorarioLocal.jsx';
+import PaginaLocales from './pages/PaginaLocales.jsx';
+import PaginaCartaLocal from './pages/PaginaCartaLocal.jsx';
+import PaginaDetalleProducto from './pages/PaginaDetalleProducto.jsx';
+import PaginaCarrito from './pages/PaginaCarrito.jsx';
 import './styles/compartido.css';
 
 
@@ -62,7 +66,10 @@ const router = createBrowserRouter([
       },
 
       // Públicas
-      proximamente('locales', 'Locales del campus', 'HU-3 (Catálogo y carrito)'),
+      // HU-3 · Catálogo (el visitante ve locales y cartas en modo lectura)
+      { path: 'locales', element: <PaginaLocales /> },
+      { path: 'locales/:localId', element: <PaginaCartaLocal /> },
+      { path: 'locales/:localId/productos/:productoId', element: <PaginaDetalleProducto /> },
       { path: 'prerrequisitos', element: <Prerrequisitos /> },
 
       // Cualquier rol autenticado
@@ -75,6 +82,8 @@ const router = createBrowserRouter([
       {
         element: <RutaProtegida roles={['comensal']} />,
         children: [
+          { path: 'carrito', element: <PaginaCarrito /> }, // HU-3
+          proximamente('pedido/confirmar', 'Confirmar pedido', 'HU-4 (Pedidos)'),
           proximamente('mis-pedidos', 'Mis pedidos', 'HU-4 (Pedidos)'),
           proximamente('mis-calificaciones', 'Mis calificaciones', 'HU-6 (Valoraciones)')
         ]

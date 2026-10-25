@@ -1,0 +1,45 @@
+/* HU-3 · Estilos comunes de HU-3 (textos, avisos, chips, retículas y estados vacíos). Usa los tokens de design-tokens.css; clases con prefijo hu3-. */
+
+.hu3 { padding-top: var(--space-5); }
+.hu3-titulo { font: var(--font-title-screen); margin-bottom: var(--space-1); }
+.hu3-subtitulo { font: var(--font-caption); color: var(--color-text-muted); }
+.hu3-ayuda { font: var(--font-caption); color: var(--color-text-muted); margin-top: var(--space-2); }
+.hu3-crece { flex: 1; min-width: 0; }
+.hu3-bloque { width: 100%; }
+.hu3-estrella { color: var(--color-warning); fill: var(--color-warning); vertical-align: -1px; }
+.hu3-precio { font: var(--font-price); white-space: nowrap; }
+.hu3-precio--grande { font-size: 22px; margin: var(--space-2) 0 var(--space-4); }
+.hu3-enlace { background: none; border: 0; padding: 0; font: inherit; font-size: 13px; color: var(--color-primary); font-weight: 600; cursor: pointer; }
+.hu3-enlace:hover { text-decoration: underline; }
+.hu3-enlace--rojo { color: var(--color-danger); }
+.hu3-aviso { display: flex; gap: var(--space-2); align-items: flex-start; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); font: var(--font-caption); margin-bottom: var(--space-4); background: var(--color-state-recibido-bg); color: var(--color-info); }
+.hu3-aviso--info { background: var(--color-primary-soft); color: var(--color-primary-dark); }
+.hu3-aviso--advertencia { background: var(--color-state-preparacion-bg); color: #8A5A12; }
+.hu3-aviso--error { background: var(--color-primary-soft); color: var(--color-danger); }
+.hu3-controles { display: flex; gap: var(--space-2); flex-wrap: wrap; align-items: center; }
+.hu3-select { flex: none; min-height: 40px; font-size: 14px; padding: 0 36px 0 var(--space-3); }
+.hu3-chips { display: flex; gap: var(--space-2); overflow-x: auto; padding-bottom: var(--space-2); margin-bottom: var(--space-3); }
+.hu3-chip { flex: none; display: inline-flex; align-items: center; gap: var(--space-1); min-height: 36px; padding: 0 var(--space-4); border-radius: var(--radius-chip); border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font: 500 14px var(--font-family-body); cursor: pointer; }
+.hu3-chip:hover { border-color: var(--color-primary); }
+.hu3-chip--activo { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+.hu3-chip--filtro { background: var(--color-primary-soft); border-color: var(--color-primary-soft); color: var(--color-primary-dark); font-weight: 600; }
+.hu3-chip--chico { min-height: 28px; font-size: 12px; padding: 0 var(--space-3); }
+.hu3-reticula { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.hu3-reticula--productos { grid-template-columns: repeat(4, 1fr); }
+.hu3-vacio { text-align: center; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-10) var(--space-6); }
+.hu3-vacio h2 { font: var(--font-title-section); margin-bottom: var(--space-2); }
+.hu3-vacio p { color: var(--color-text-muted); max-width: 460px; margin: 0 auto var(--space-5); }
+.hu3-vacio__icono { width: 56px; height: 56px; margin: 0 auto var(--space-4); border-radius: 50%; background: #F3EFEA; color: var(--color-text-muted); display: grid; place-items: center; font: 600 22px var(--font-family-title); }
+.hu3-vacio__icono--rojo { background: var(--color-primary-soft); color: var(--color-primary); }
+
+@media (max-width: 1100px) {
+  .hu3-reticula--productos { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .hu3-reticula, .hu3-reticula--productos { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .hu3-reticula, .hu3-reticula--productos { grid-template-columns: 1fr; }
+}

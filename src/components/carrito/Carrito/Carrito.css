@@ -1,0 +1,37 @@
+/* HU-3 · Carrito. Usa los tokens de design-tokens.css; clases con prefijo hu3-. */
+
+.hu3-carrito { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-5); align-items: start; }
+.hu3-panel { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); }
+.hu3-panel > .hu3-subtitulo { margin-bottom: var(--space-4); }
+.hu3-lineas { list-style: none; display: flex; flex-direction: column; gap: var(--space-3); margin-bottom: var(--space-4); }
+.hu3-linea { display: grid; grid-template-columns: 64px 1fr auto auto auto; gap: var(--space-4); align-items: center; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-3); }
+.hu3-linea--problema { border-color: var(--color-danger); background: #FFF8F7; }
+.hu3-linea__foto { flex: none; width: 64px; height: 64px; border-radius: var(--radius-md); object-fit: cover; background: repeating-linear-gradient(135deg, #F6ECE8 0 8px, var(--color-border) 8px 16px); display: block; }
+.hu3-linea__info h3 { font: var(--font-subtitle); display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.hu3-linea__info p { font: var(--font-caption); color: var(--color-text-muted); }
+.hu3-linea__nota { display: flex; gap: var(--space-2); align-items: center; margin-top: var(--space-1); }
+.hu3-linea__nota .form-input { min-height: 34px; font-size: 13px; max-width: 320px; }
+.hu3-linea__alerta { color: var(--color-danger) !important; font-weight: 600; margin-top: var(--space-1); }
+.hu3-linea .hu3-precio { min-width: 80px; text-align: right; }
+.hu3-resumen { position: sticky; top: 140px; }
+.hu3-resumen h2 { font: var(--font-title-section); margin-bottom: var(--space-3); }
+.hu3-resumen dl > div { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; }
+.hu3-resumen dt { color: var(--color-text-muted); }
+.hu3-resumen dd { font: var(--font-price); font-size: 14px; }
+.hu3-resumen__total { border-top: 1px solid var(--color-border); margin-top: var(--space-2); padding-top: var(--space-4) !important; align-items: center; }
+.hu3-resumen__total dt { color: var(--color-text); }
+.hu3-resumen__total dd { font-size: 26px; line-height: 32px; }
+.hu3-resumen .hu3-ayuda { margin: var(--space-3) 0 var(--space-4); }
+
+@media (max-width: 900px) {
+  .hu3-carrito { grid-template-columns: 1fr; }
+  .hu3-resumen { position: static; }
+}
+
+@media (max-width: 600px) {
+  .hu3-linea { grid-template-columns: 52px 1fr auto; }
+  .hu3-linea__foto { width: 52px; height: 52px; }
+  .hu3-linea .hu3-cantidad { grid-column: 2; justify-self: start; }
+  .hu3-linea .hu3-precio { grid-column: 3; grid-row: 1; }
+  .hu3-linea .hu3-enlace--rojo { grid-column: 3; justify-self: end; }
+}
