@@ -1,0 +1,7 @@
+/* HU-3 · Migas. Usa los tokens de design-tokens.css; clases con prefijo hu3-. */
+
+.hu3-migas { display: flex; flex-wrap: wrap; gap: var(--space-1); font-size: 13px; color: var(--color-text-muted); margin-bottom: var(--space-4); }
+.hu3-migas__item { display: inline-flex; align-items: center; gap: var(--space-1); }
+.hu3-migas a { color: var(--color-text-muted); }
+.hu3-migas a:hover { color: var(--color-primary); }
+.hu3-migas strong { color: var(--color-text); font-weight: 600; }

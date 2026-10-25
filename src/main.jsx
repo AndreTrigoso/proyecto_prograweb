@@ -20,11 +20,19 @@ import PaginaProximamente from './pages/PaginaProximamente.jsx';
 import PaginaBandejaDia from './pages/PaginaBandejaDia.jsx';
 import PaginaEntregaCodigo from './pages/PaginaEntregaCodigo.jsx';
 import PaginaResumenDia from './pages/PaginaResumenDia.jsx';
-import MiCarta from './hu2/MiCarta.jsx';
-import GestionOpciones from './hu2/GestionOpciones.jsx';
-import DisponibilidadLocal from './hu2/DisponibilidadLocal.jsx';
-import PerfilLocal from './hu2/PerfilLocal.jsx';
-import HorarioLocal from './hu2/HorarioLocal.jsx';
+import PaginaMiCarta from './pages/PaginaMiCarta.jsx';
+import PaginaOpcionesLocal from './pages/PaginaOpcionesLocal.jsx';
+import PaginaDisponibilidadLocal from './pages/PaginaDisponibilidadLocal.jsx';
+import PaginaPerfilLocal from './pages/PaginaPerfilLocal.jsx';
+import PaginaHorarioLocal from './pages/PaginaHorarioLocal.jsx';
+import PaginaLocales from './pages/PaginaLocales.jsx';
+import PaginaCartaLocal from './pages/PaginaCartaLocal.jsx';
+import PaginaDetalleProducto from './pages/PaginaDetalleProducto.jsx';
+import PaginaCarrito from './pages/PaginaCarrito.jsx';
+import PaginaConfirmarPedido from './pages/PaginaConfirmarPedido.jsx';
+import PaginaPedidoConfirmado from './pages/PaginaPedidoConfirmado.jsx';
+import PaginaMisPedidos from './pages/PaginaMisPedidos.jsx';
+import PaginaDetalleMiPedido from './pages/PaginaDetalleMiPedido.jsx';
 import './styles/compartido.css';
 
 
@@ -65,7 +73,10 @@ const router = createBrowserRouter([
       },
 
       // Públicas
-      proximamente('locales', 'Locales del campus', 'HU-3 (Catálogo y carrito)'),
+      // HU-3 · Catálogo (el visitante ve locales y cartas en modo lectura)
+      { path: 'locales', element: <PaginaLocales /> },
+      { path: 'locales/:localId', element: <PaginaCartaLocal /> },
+      { path: 'locales/:localId/productos/:productoId', element: <PaginaDetalleProducto /> },
       { path: 'prerrequisitos', element: <Prerrequisitos /> },
 
       // Cualquier rol autenticado
@@ -78,7 +89,11 @@ const router = createBrowserRouter([
       {
         element: <RutaProtegida roles={['comensal']} />,
         children: [
-          proximamente('mis-pedidos', 'Mis pedidos', 'HU-4 (Pedidos)'),
+          { path: 'carrito', element: <PaginaCarrito /> }, // HU-3
+          { path: 'pedido/confirmar', element: <PaginaConfirmarPedido /> }, // HU-4 · 4.1
+          { path: 'mis-pedidos', element: <PaginaMisPedidos /> }, // HU-4 · 4.3
+          { path: 'mis-pedidos/:pedidoId', element: <PaginaDetalleMiPedido /> }, // HU-4 · 4.4 y 4.5
+          { path: 'mis-pedidos/:pedidoId/confirmado', element: <PaginaPedidoConfirmado /> }, // HU-4 · 4.2
           proximamente('mis-calificaciones', 'Mis calificaciones', 'HU-6 (Valoraciones)')
         ]
       },
@@ -91,11 +106,11 @@ const router = createBrowserRouter([
           { path: 'local/bandeja', element: <PaginaBandejaDia /> },
           { path: 'local/entrega', element: <PaginaEntregaCodigo /> },
           { path: 'local/resumen', element: <PaginaResumenDia /> },
-          { path: 'local/mi-carta', element: <MiCarta /> },
-          { path: 'local/opciones', element: <GestionOpciones /> },
-          { path: 'local/agotados', element: <DisponibilidadLocal /> },
-          { path: 'local/perfil', element: <PerfilLocal /> },
-          { path: 'local/horario', element: <HorarioLocal /> },
+          { path: 'local/mi-carta', element: <PaginaMiCarta /> },
+          { path: 'local/opciones', element: <PaginaOpcionesLocal /> },
+          { path: 'local/agotados', element: <PaginaDisponibilidadLocal /> },
+          { path: 'local/perfil', element: <PaginaPerfilLocal /> },
+          { path: 'local/horario', element: <PaginaHorarioLocal /> },
           proximamente('local/resenas', 'Reseñas', 'HU-6 (Valoraciones)')
         ]
       },

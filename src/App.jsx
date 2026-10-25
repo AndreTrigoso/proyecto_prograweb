@@ -12,6 +12,7 @@ import {
   Footer
 } from './components/common';
 
+
 const RUTAS_PESTANAS = {
   locales: '/locales',
   pedidos: '/mis-pedidos',
@@ -57,7 +58,8 @@ function MainLayout() {
           activeTab={activeComensalTab}
           onTabChange={(id) => navigate(RUTAS_PESTANAS[id])}
           breadcrumbs={
-            activeComensalTab === 'cuenta'
+            // Las vistas de HU-3 (carta, producto, carrito) y HU-4 (pedidos) muestran sus propias migas de pan
+            activeComensalTab === 'cuenta' || activeComensalTab === 'pedidos' || pathname.startsWith('/locales/') || pathname === '/carrito' || pathname.startsWith('/pedido/')
               ? []
               : [
                   { label: 'Campus Monterrico' },
@@ -97,14 +99,7 @@ function MainLayout() {
 
       {/* Carrito deslizante y modal de conflicto */}
       <CartDrawer
-        onCheckout={() => {
-          showToast({
-            type: 'success',
-            title: 'Confirmación de Pedido (HU-4)',
-            message:
-              'Redirigiendo a selección de franja de recojo y generación de código PED-XXXX.'
-          });
-        }}
+        onCheckout={() => navigate('/carrito')} // HU-3: el carrito completo (3.4) revisa disponibilidad antes de pasar a HU-4
       />
 
       {/* Pie de página oficial */}

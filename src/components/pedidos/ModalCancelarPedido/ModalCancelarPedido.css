@@ -1,0 +1,9 @@
+/* HU-4 · 4.5 Modal de cancelación */
+.hu4-modal { max-width: 600px; width: calc(100% - 32px); }
+.hu4-modal__cabecera { display: flex; gap: var(--space-3); align-items: flex-start; margin-bottom: var(--space-4); }
+.hu4-modal__cabecera h2 { font: var(--font-title-section); }
+.hu4-modal__cabecera p { font: var(--font-caption); font-size: 14px; color: var(--color-text-muted); }
+.hu4-modal__icono { width: 40px; height: 40px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--color-primary-soft); color: var(--color-danger); font: 700 20px var(--font-family-title); }
+.hu4-modal__resumen { display: flex; justify-content: space-between; gap: var(--space-3); font: var(--font-caption); color: var(--color-text-muted); margin-bottom: var(--space-5); }
+.hu4-modal__resumen b { font: var(--font-price); font-size: 15px; color: var(--color-text); }
+.hu4-modal__acciones { display: flex; justify-content: flex-end; gap: var(--space-3); flex-wrap: wrap; }

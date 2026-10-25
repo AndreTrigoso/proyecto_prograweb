@@ -1,0 +1,40 @@
+/* HU-4 · Estilos comunes de pedidos (código, ítems, totales, banners). Usa los tokens de design-tokens.css; clases con prefijo hu4-. */
+
+.hu4-separado { margin-bottom: var(--space-5); }
+.hu4-sin-margen { margin: 0; }
+.hu4-centro { text-align: center; }
+.hu4-arriba { margin-top: var(--space-2); }
+.hu4-fuerte { font: var(--font-price); font-size: 15px; color: var(--color-text); }
+.hu4-panel__titulo { font: var(--font-title-section); margin-bottom: var(--space-3); }
+
+/* Banners de estado (pedido confirmado, pedido listo) */
+.hu4-banner { display: flex; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); font: var(--font-caption); font-size: 14px; margin-bottom: var(--space-5); }
+.hu4-banner--exito { background: var(--color-state-listo-bg); color: #3F7420; border: 1px solid #D3EFBF; }
+
+/* Ítems y total */
+.hu4-items { list-style: none; display: flex; flex-direction: column; gap: var(--space-3); padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); }
+.hu4-items li { display: flex; justify-content: space-between; gap: var(--space-4); align-items: flex-start; font-size: 14px; }
+.hu4-items li div { display: flex; flex-direction: column; min-width: 0; }
+.hu4-items small { font: var(--font-caption); font-size: 12px; color: var(--color-text-muted); }
+.hu4-items b { font: var(--font-price); font-size: 14px; white-space: nowrap; }
+.hu4-items--linea em { font-style: normal; color: var(--color-text-muted); }
+.hu4-total { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); padding: var(--space-4) 0; }
+.hu4-total span { font: var(--font-caption); color: var(--color-text-muted); }
+.hu4-total strong { font: 600 26px/32px var(--font-family-title); white-space: nowrap; }
+
+/* Código de pedido */
+.hu4-codigo { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-1); padding: var(--space-5) var(--space-4); border: 1.5px solid var(--color-primary); border-radius: var(--radius-lg); background: var(--color-primary-soft); color: var(--color-primary-dark); }
+.hu4-codigo small { font: var(--font-label); letter-spacing: .14em; text-transform: uppercase; }
+.hu4-codigo strong { font: 700 40px/48px var(--font-family-title); letter-spacing: .04em; }
+.hu4-codigo span { font: var(--font-caption); }
+.hu4-codigo--centrado { width: min(100%, 330px); margin: 0 auto var(--space-5); }
+.hu4-codigo--centrado strong { font-size: 52px; line-height: 60px; }
+.hu4-codigo--listo { border-color: var(--color-success); background: var(--color-state-listo-bg); color: #3F7420; padding: var(--space-6) var(--space-4); }
+.hu4-codigo--listo strong { font-size: 48px; line-height: 56px; }
+
+/* Acciones */
+.hu4-acciones { display: flex; gap: var(--space-3); align-items: center; flex-wrap: wrap; }
+.hu4-acciones--centro { justify-content: center; }
+.hu4-btn-verde { background: var(--color-success); color: #fff; }
+.hu4-btn-verde:hover:not(:disabled) { background: #4A8224; }
+.hu4-rotulo--rojo { color: var(--color-primary); }

@@ -1,0 +1,22 @@
+/* HU-4 · 4.1 Confirmación del pedido */
+.hu4-confirmar { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); align-items: start; }
+.hu4-confirmar .hu3-subtitulo { max-width: 440px; }
+
+.hu4-franjas { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2); margin-bottom: var(--space-4); }
+.hu4-franja { min-height: 44px; border-radius: 10px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font: 500 14px var(--font-family-body); cursor: pointer; }
+.hu4-franja:hover:not(:disabled) { border-color: var(--color-primary); }
+.hu4-franja--elegida { border: 1.5px solid var(--color-primary); background: var(--color-primary-soft); color: var(--color-primary-dark); font-weight: 600; }
+.hu4-franja--tachada { background: #F3EDE9; color: #B8A9A2; text-decoration: line-through; cursor: not-allowed; }
+.hu4-franja--invalida { background: var(--color-state-preparacion-bg); border: 1.5px solid #E9C88E; color: #8A5A12; }
+.hu4-franja--vacia { display: block; background: #F6F1EE; border-color: #F6F1EE; cursor: default; }
+
+.hu4-elegida { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); margin-bottom: var(--space-3); }
+.hu4-elegida span { font: var(--font-caption); color: var(--color-text-muted); }
+.hu4-elegida strong { font: var(--font-price); }
+
+@media (max-width: 900px) {
+  .hu4-confirmar { grid-template-columns: 1fr; }
+}
+@media (max-width: 420px) {
+  .hu4-franjas { grid-template-columns: repeat(3, 1fr); }
+}
