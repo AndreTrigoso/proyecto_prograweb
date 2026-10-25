@@ -1,0 +1,7 @@
+/* HU-3 · Paginacion. Usa los tokens de design-tokens.css; clases con prefijo hu3-. */
+
+.hu3-paginacion { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-5); font: var(--font-caption); color: var(--color-text-muted); }
+.hu3-paginacion__botones { display: flex; gap: var(--space-1); }
+.hu3-paginacion__botones button { min-width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font: 500 14px var(--font-family-body); cursor: pointer; }
+.hu3-paginacion__botones button.activa { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+.hu3-paginacion__botones button:disabled { opacity: .4; cursor: not-allowed; }

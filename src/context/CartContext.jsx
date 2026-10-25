@@ -1,162 +1,166 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+/* HU-3 · Estado del carrito (contrato 2.4: Carrito / CarritoItem).
+   Se conserva la misma API que ya usan Header, CartDrawer y CartSummary (addItem, updateQuantity, removeItem…).
+   Mejoras de HU-3: carrito por usuario, fusión de ítems iguales, límites de cantidad y nota,
+   y sincronización de precios con la carta vigente. */
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { localesService, productosService } from '../services/storageService';
+import { useAuth } from './AuthContext';
+import { MAX_CANTIDAD, MAX_NOTA, precioUnitario } from '../components/carrito/compartido/reglas';
 
 const CartContext = createContext();
 
-const CART_STORAGE_KEY = 'pw_cafeterias_cart';
+const PREFIJO = 'pw_cafeterias_cart';
+const VACIO = { items: [], localId: null };
+
+const claveDe = (usuario) => (usuario?.rol === 'comensal' ? `${PREFIJO}_${usuario.id}` : null);
+const nuevoId = () => `item-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
+
+// Dos ítems se fusionan solo si son el mismo producto, con las mismas opciones y la misma nota.
+const firma = (productoId, opciones, nota) =>
+  [productoId, ...opciones.map((o) => o.opcionId ?? o.nombre).sort(), (nota ?? '').trim().toLowerCase()].join('|');
+
+function leer(clave) {
+  if (!clave) return VACIO;
+  try {
+    return JSON.parse(localStorage.getItem(clave)) ?? VACIO;
+  } catch {
+    return VACIO;
+  }
+}
+
+function construirItem(producto, cantidad, opcionesSeleccionadas, nota) {
+  const unitario = precioUnitario(producto.precio, opcionesSeleccionadas);
+  const n = Math.min(MAX_CANTIDAD, Math.max(1, cantidad));
+  return {
+    itemCarritoId: nuevoId(),
+    productoId: producto.id,
+    nombre: producto.nombre,
+    fotografia: producto.fotografia,
+    localId: producto.localId,
+    tiempoPreparacionMin: producto.tiempoPreparacionMin,
+    precioBase: producto.precio,
+    precioUnitario: unitario,
+    cantidad: n,
+    opcionesSeleccionadas,
+    nota: (nota ?? '').trim().slice(0, MAX_NOTA),
+    subtotal: unitario * n,
+  };
+}
 
 export function CartProvider({ children }) {
-  const [items, setItems] = useState(() => {
-    try {
-      const saved = localStorage.getItem(CART_STORAGE_KEY);
-      return saved ? JSON.parse(saved) : [];
-    } catch {
-      return [];
-    }
-  });
+  const { currentUser } = useAuth();
+  const clave = claveDe(currentUser);
+  const [estado, setEstado] = useState(() => ({ clave, ...leer(clave) }));
 
-  const [localId, setLocalId] = useState(() => {
-    try {
-      const saved = localStorage.getItem('pw_cafeterias_cart_local');
-      return saved || null;
-    } catch {
-      return null;
-    }
-  });
+  // Al cambiar de usuario se carga su propio carrito (estado derivado durante el render).
+  if (estado.clave !== clave) setEstado({ clave, ...leer(clave) });
+
+  useEffect(() => {
+    if (!estado.clave) return;
+    localStorage.setItem(estado.clave, JSON.stringify({ items: estado.items, localId: estado.items.length ? estado.localId : null }));
+  }, [estado]);
+
+  const { items } = estado;
+  const localId = items.length ? estado.localId : null;
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [conflictModal, setConflictModal] = useState({ isOpen: false, pendingItem: null });
 
-  // Guardar en storage cada vez que cambia
-  useEffect(() => {
-    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
-    if (items.length === 0) {
-      setLocalId(null);
-      localStorage.removeItem('pw_cafeterias_cart_local');
-    } else if (localId) {
-      localStorage.setItem('pw_cafeterias_cart_local', localId);
-    }
-  }, [items, localId]);
+  const setItems = useCallback((fn) => {
+    setEstado((e) => ({ ...e, items: typeof fn === 'function' ? fn(e.items) : fn }));
+  }, []);
 
-  const activeLocal = localId ? localesService.getById(localId) : null;
+  const agregar = useCallback((producto, cantidad, opcionesSeleccionadas, nota, { reemplazar = false } = {}) => {
+    setEstado((e) => {
+      const base = reemplazar || e.localId !== producto.localId ? [] : e.items;
+      const f = firma(producto.id, opcionesSeleccionadas, nota);
+      const igual = base.find((i) => firma(i.productoId, i.opcionesSeleccionadas, i.nota) === f);
+      const items = igual
+        ? base.map((i) => {
+          if (i !== igual) return i;
+          const n = Math.min(MAX_CANTIDAD, i.cantidad + cantidad);
+          return { ...i, cantidad: n, subtotal: i.precioUnitario * n };
+        })
+        : [...base, construirItem(producto, cantidad, opcionesSeleccionadas, nota)];
+      return { ...e, items, localId: producto.localId };
+    });
+  }, []);
 
-  // Agregar ítem validando que sea del mismo local
-  const addItem = (producto, cantidad = 1, opcionesSeleccionadas = [], nota = '') => {
+  // Agregar ítem validando que sea del mismo local (si no, se abre el aviso de conflicto del CartDrawer).
+  const addItem = (producto, cantidad = 1, opcionesSeleccionadas = [], nota = '', { abrirCarrito = true } = {}) => {
     if (items.length > 0 && localId && localId !== producto.localId) {
-      // Conflicto de local distinto
-      setConflictModal({
-        isOpen: true,
-        pendingItem: { producto, cantidad, opcionesSeleccionadas, nota }
-      });
+      setConflictModal({ isOpen: true, pendingItem: { producto, cantidad, opcionesSeleccionadas, nota, abrirCarrito } });
       return false;
     }
-
-    const extraTotal = opcionesSeleccionadas.reduce((sum, opt) => sum + (opt.precioAdicional || 0), 0);
-    const precioBase = producto.precio;
-    const precioUnitario = precioBase + extraTotal;
-    const subtotal = precioUnitario * cantidad;
-
-    const newItem = {
-      itemCarritoId: `item-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
-      productoId: producto.id,
-      nombre: producto.nombre,
-      fotografia: producto.fotografia,
-      localId: producto.localId,
-      precioBase,
-      precioUnitario,
-      cantidad,
-      opcionesSeleccionadas,
-      nota,
-      subtotal
-    };
-
-    setItems(prev => [...prev, newItem]);
-    setLocalId(producto.localId);
-    setIsDrawerOpen(true);
+    agregar(producto, cantidad, opcionesSeleccionadas, nota);
+    if (abrirCarrito) setIsDrawerOpen(true);
     return true;
   };
 
   const resolveConflictReplace = () => {
-    if (conflictModal.pendingItem) {
-      const { producto, cantidad, opcionesSeleccionadas, nota } = conflictModal.pendingItem;
-      const extraTotal = opcionesSeleccionadas.reduce((sum, opt) => sum + (opt.precioAdicional || 0), 0);
-      const precioUnitario = producto.precio + extraTotal;
-      const newItem = {
-        itemCarritoId: `item-${Date.now()}`,
-        productoId: producto.id,
-        nombre: producto.nombre,
-        fotografia: producto.fotografia,
-        localId: producto.localId,
-        precioBase: producto.precio,
-        precioUnitario,
-        cantidad,
-        opcionesSeleccionadas,
-        nota,
-        subtotal: precioUnitario * cantidad
-      };
-      setItems([newItem]);
-      setLocalId(producto.localId);
-      setConflictModal({ isOpen: false, pendingItem: null });
-      setIsDrawerOpen(true);
+    const p = conflictModal.pendingItem;
+    if (p) {
+      agregar(p.producto, p.cantidad, p.opcionesSeleccionadas, p.nota, { reemplazar: true });
+      if (p.abrirCarrito !== false) setIsDrawerOpen(true);
     }
-  };
-
-  const cancelConflict = () => {
     setConflictModal({ isOpen: false, pendingItem: null });
   };
 
+  const cancelConflict = () => setConflictModal({ isOpen: false, pendingItem: null });
+
+  const removeItem = useCallback((itemCarritoId) => {
+    setItems((prev) => prev.filter((item) => item.itemCarritoId !== itemCarritoId));
+  }, [setItems]);
+
   const updateQuantity = (itemCarritoId, newQty) => {
-    if (newQty <= 0) {
-      removeItem(itemCarritoId);
-      return;
-    }
-    setItems(prev => prev.map(item => {
-      if (item.itemCarritoId === itemCarritoId) {
-        return {
-          ...item,
-          cantidad: newQty,
-          subtotal: item.precioUnitario * newQty
-        };
-      }
-      return item;
-    }));
+    if (newQty <= 0) return removeItem(itemCarritoId);
+    const n = Math.min(MAX_CANTIDAD, newQty);
+    setItems((prev) => prev.map((item) =>
+      item.itemCarritoId === itemCarritoId ? { ...item, cantidad: n, subtotal: item.precioUnitario * n } : item));
   };
 
   const updateItemNote = (itemCarritoId, nota) => {
-    setItems(prev => prev.map(item => item.itemCarritoId === itemCarritoId ? { ...item, nota } : item));
+    setItems((prev) => prev.map((item) => (item.itemCarritoId === itemCarritoId ? { ...item, nota: String(nota).slice(0, MAX_NOTA) } : item)));
   };
 
-  const removeItem = (itemCarritoId) => {
-    setItems(prev => prev.filter(item => item.itemCarritoId !== itemCarritoId));
-  };
+  const clearCart = () => setEstado((e) => ({ ...e, items: [], localId: null }));
 
-  const clearCart = () => {
-    setItems([]);
-    setLocalId(null);
-  };
-
-  // Validar si algún producto del carrito fue agotado
-  const checkCartAvailability = () => {
-    const unavailableItems = [];
-    items.forEach(item => {
-      const prod = productosService.getById(item.productoId);
-      if (!prod || prod.disponibilidad !== 'disponible') {
-        unavailableItems.push(item);
-      }
+  // Aplica los precios, nombres y fotos vigentes que devuelve catalogoService.verificarCarrito.
+  const sincronizarItems = useCallback((vigentes) => {
+    setItems((prev) => {
+      let cambio = false;
+      const nuevos = prev.map((item) => {
+        const v = vigentes.find((x) => x.itemCarritoId === item.itemCarritoId && !x.problema);
+        if (!v) return item;
+        const unitario = precioUnitario(v.precioBase, v.opcionesSeleccionadas);
+        if (unitario === item.precioUnitario && v.nombre === item.nombre && v.fotografia === item.fotografia) return item;
+        cambio = true;
+        return { ...item, nombre: v.nombre, fotografia: v.fotografia, precioBase: v.precioBase, opcionesSeleccionadas: v.opcionesSeleccionadas, precioUnitario: unitario, subtotal: unitario * item.cantidad };
+      });
+      return cambio ? nuevos : prev;
     });
-    return unavailableItems;
-  };
+  }, [setItems]);
 
-  const totalItemsCount = items.reduce((sum, item) => sum + item.cantidad, 0);
-  const subtotalTotal = items.reduce((sum, item) => sum + item.subtotal, 0);
+  // Productos del carrito que ya no están disponibles (lo usa CartSummary).
+  const checkCartAvailability = () =>
+    items.filter((item) => {
+      const prod = productosService.getById(item.productoId);
+      return !prod || prod.disponibilidad !== 'disponible';
+    });
+
+  const activeLocal = localId ? localesService.getById(localId) : null;
+  const totals = useMemo(() => ({
+    totalItemsCount: items.reduce((sum, item) => sum + item.cantidad, 0),
+    subtotalTotal: Math.round(items.reduce((sum, item) => sum + item.subtotal, 0) * 100) / 100,
+    totalBase: Math.round(items.reduce((sum, item) => sum + item.precioBase * item.cantidad, 0) * 100) / 100,
+  }), [items]);
 
   return (
     <CartContext.Provider value={{
       items,
       localId,
       activeLocal,
-      totalItemsCount,
-      subtotalTotal,
+      ...totals,
       isDrawerOpen,
       setIsDrawerOpen,
       conflictModal,
@@ -167,7 +171,8 @@ export function CartProvider({ children }) {
       clearCart,
       resolveConflictReplace,
       cancelConflict,
-      checkCartAvailability
+      checkCartAvailability,
+      sincronizarItems,
     }}>
       {children}
     </CartContext.Provider>

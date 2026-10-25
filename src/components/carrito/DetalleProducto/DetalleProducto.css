@@ -1,0 +1,29 @@
+/* HU-3 · DetalleProducto. Usa los tokens de design-tokens.css; clases con prefijo hu3-. */
+
+.hu3-detalle { display: grid; grid-template-columns: 340px 1fr; gap: var(--space-6); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); }
+.hu3-detalle__foto { position: relative; aspect-ratio: 1; border-radius: var(--radius-md); overflow: hidden; background: repeating-linear-gradient(135deg, #F6ECE8 0 10px, var(--color-border) 10px 20px); display: grid; place-items: center; font: 11px ui-monospace, monospace; color: var(--color-text-muted); }
+.hu3-detalle__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.hu3-detalle__meta { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-3); font: var(--font-caption); color: var(--color-text-muted); }
+.hu3-detalle__meta span { display: inline-flex; align-items: center; gap: var(--space-1); }
+.hu3-detalle__nombre { font: var(--font-title-screen); display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-2); }
+.hu3-detalle__descripcion { color: var(--color-text-muted); max-width: 480px; }
+.hu3-detalle__grupos { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-1) var(--space-6); }
+.hu3-detalle__pie { display: flex; gap: var(--space-3); align-items: center; flex-wrap: wrap; border-top: 1px solid var(--color-border); padding-top: var(--space-4); margin-top: var(--space-2); }
+.hu3-grupo { border: 0; margin: 0 0 var(--space-4); padding: 0; min-width: 0; }
+.hu3-grupo legend { margin-bottom: var(--space-2); }
+.hu3-grupo--error { border: 1.5px solid var(--color-danger); border-radius: var(--radius-md); padding: var(--space-2) var(--space-3); }
+.hu3-grupo--error legend { color: var(--color-danger); padding: 0 var(--space-1); }
+.hu3-alternativa { display: grid; grid-template-columns: auto 1fr auto; gap: var(--space-3); align-items: center; padding: 6px 0; font-size: 14px; cursor: pointer; }
+.hu3-alternativa input { width: 18px; height: 18px; accent-color: var(--color-primary); }
+.hu3-alternativa small { color: var(--color-text-muted); }
+.hu3-alternativa b { font: var(--font-price); font-size: 14px; }
+
+@media (max-width: 900px) {
+  .hu3-detalle { grid-template-columns: 1fr; }
+  .hu3-detalle__foto { aspect-ratio: 16 / 9; }
+}
+
+@media (max-width: 600px) {
+  .hu3-detalle__grupos { grid-template-columns: 1fr; }
+  .hu3-detalle__pie .btn { flex: 1 1 100%; }
+}

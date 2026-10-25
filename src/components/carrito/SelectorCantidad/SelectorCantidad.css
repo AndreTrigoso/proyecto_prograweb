@@ -1,0 +1,9 @@
+/* HU-3 · SelectorCantidad. Usa los tokens de design-tokens.css; clases con prefijo hu3-. */
+
+.hu3-cantidad { display: inline-flex; align-items: center; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); min-height: 44px; overflow: hidden; }
+.hu3-cantidad button { width: 40px; height: 44px; border: 0; background: none; color: var(--color-primary); cursor: pointer; display: grid; place-items: center; }
+.hu3-cantidad button:hover:not(:disabled) { background: var(--color-primary-soft); }
+.hu3-cantidad button:disabled { color: var(--color-border); cursor: not-allowed; }
+.hu3-cantidad span { min-width: 28px; text-align: center; font: var(--font-price); font-size: 16px; }
+.hu3-cantidad--chica { min-height: 36px; }
+.hu3-cantidad--chica button { height: 36px; width: 32px; }

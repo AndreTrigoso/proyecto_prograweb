@@ -1,0 +1,27 @@
+/* HU-3 · ModalProductoAgotado. Usa los tokens de design-tokens.css; clases con prefijo hu3-. */
+
+.hu3-modal { max-width: 680px; width: calc(100% - 32px); }
+.hu3-modal__cabecera { display: flex; gap: var(--space-3); align-items: flex-start; margin-bottom: var(--space-4); }
+.hu3-modal__cabecera h2 { font: var(--font-title-section); }
+.hu3-modal__cabecera p { font: var(--font-caption); color: var(--color-text-muted); }
+.hu3-modal__icono { width: 40px; height: 40px; flex: none; border-radius: 50%; background: var(--color-state-preparacion-bg); color: var(--color-warning); display: grid; place-items: center; }
+.hu3-modal__item { display: flex; gap: var(--space-3); align-items: center; padding: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg); margin-bottom: var(--space-4); }
+.hu3-modal__item > img, .hu3-modal__miniatura { width: 48px; height: 48px; border-radius: var(--radius-sm); object-fit: cover; background: var(--color-border); flex: none; opacity: .6; }
+.hu3-modal__item strong { display: block; font: var(--font-subtitle); color: var(--color-text-muted); }
+.hu3-modal__item small { font: var(--font-caption); color: var(--color-text-muted); }
+.hu3-reemplazos { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2); margin: var(--space-2) 0 var(--space-5); }
+.hu3-reemplazo { display: flex; gap: var(--space-2); align-items: center; text-align: left; border: 1px solid var(--color-border); background: var(--color-surface); border-radius: var(--radius-md); padding: var(--space-2); cursor: pointer; font: inherit; color: inherit; }
+.hu3-reemplazo img { width: 36px; height: 36px; border-radius: var(--radius-sm); object-fit: cover; flex: none; }
+.hu3-reemplazo b { display: block; font-size: 13px; font-weight: 500; }
+.hu3-reemplazo em { font: var(--font-price); font-size: 13px; font-style: normal; }
+.hu3-reemplazo--activo { border-color: var(--color-primary); background: var(--color-primary-soft); }
+.hu3-reemplazo--activo em { color: var(--color-primary-dark); }
+.hu3-modal__acciones { display: flex; justify-content: flex-end; gap: var(--space-3); flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  .hu3-reemplazos { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .hu3-reemplazos { grid-template-columns: 1fr; }
+}
