@@ -26,6 +26,10 @@ import PaginaLocales from './pages/PaginaLocales.jsx';
 import PaginaCartaLocal from './pages/PaginaCartaLocal.jsx';
 import PaginaDetalleProducto from './pages/PaginaDetalleProducto.jsx';
 import PaginaCarrito from './pages/PaginaCarrito.jsx';
+import PaginaConfirmarPedido from './pages/PaginaConfirmarPedido.jsx';
+import PaginaPedidoConfirmado from './pages/PaginaPedidoConfirmado.jsx';
+import PaginaMisPedidos from './pages/PaginaMisPedidos.jsx';
+import PaginaDetalleMiPedido from './pages/PaginaDetalleMiPedido.jsx';
 import './styles/compartido.css';
 
 
@@ -83,8 +87,10 @@ const router = createBrowserRouter([
         element: <RutaProtegida roles={['comensal']} />,
         children: [
           { path: 'carrito', element: <PaginaCarrito /> }, // HU-3
-          proximamente('pedido/confirmar', 'Confirmar pedido', 'HU-4 (Pedidos)'),
-          proximamente('mis-pedidos', 'Mis pedidos', 'HU-4 (Pedidos)'),
+          { path: 'pedido/confirmar', element: <PaginaConfirmarPedido /> }, // HU-4 · 4.1
+          { path: 'mis-pedidos', element: <PaginaMisPedidos /> }, // HU-4 · 4.3
+          { path: 'mis-pedidos/:pedidoId', element: <PaginaDetalleMiPedido /> }, // HU-4 · 4.4 y 4.5
+          { path: 'mis-pedidos/:pedidoId/confirmado', element: <PaginaPedidoConfirmado /> }, // HU-4 · 4.2
           proximamente('mis-calificaciones', 'Mis calificaciones', 'HU-6 (Valoraciones)')
         ]
       },

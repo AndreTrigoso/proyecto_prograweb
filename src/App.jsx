@@ -58,8 +58,8 @@ function MainLayout() {
           activeTab={activeComensalTab}
           onTabChange={(id) => navigate(RUTAS_PESTANAS[id])}
           breadcrumbs={
-            // Las vistas de HU-3 (carta, producto, carrito) muestran sus propias migas de pan
-            activeComensalTab === 'cuenta' || pathname.startsWith('/locales/') || pathname === '/carrito'
+            // Las vistas de HU-3 (carta, producto, carrito) y HU-4 (pedidos) muestran sus propias migas de pan
+            activeComensalTab === 'cuenta' || activeComensalTab === 'pedidos' || pathname.startsWith('/locales/') || pathname === '/carrito' || pathname.startsWith('/pedido/')
               ? []
               : [
                   { label: 'Campus Monterrico' },

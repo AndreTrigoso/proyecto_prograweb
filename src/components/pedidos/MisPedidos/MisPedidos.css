@@ -1,0 +1,26 @@
+/* HU-4 · 4.3 Mis pedidos */
+.hu4-filas { display: flex; flex-direction: column; gap: var(--space-3); margin-bottom: var(--space-2); }
+.hu4-fila { display: grid; grid-template-columns: minmax(170px, 1.2fr) minmax(320px, 2.6fr) 128px 196px; gap: var(--space-4); align-items: center; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); }
+.hu4-fila--listo { background: var(--color-state-listo-bg); border: 1.5px solid var(--color-success); }
+.hu4-fila__local { display: flex; flex-direction: column; min-width: 0; }
+.hu4-fila__local a { color: var(--color-text); }
+.hu4-fila__local a:hover { color: var(--color-primary); }
+.hu4-fila__local strong { font: var(--font-subtitle); }
+.hu4-fila__local small { font: var(--font-label); color: var(--color-text-muted); }
+.hu4-fila--listo .hu4-fila__local small { color: #3F7420; }
+.hu4-fila__datos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-3); }
+.hu4-fila__datos dt { font: var(--font-label); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--color-text-muted); }
+.hu4-fila__datos dd { font: var(--font-caption); color: var(--color-text-muted); white-space: nowrap; }
+.hu4-fila__datos dd.hu4-fuerte { font: var(--font-price); font-size: 15px; color: var(--color-text); }
+.hu4-fila > :nth-child(3) { justify-self: end; }
+.hu4-fila__acciones { display: flex; gap: var(--space-2); justify-content: flex-end; }
+
+@media (max-width: 1000px) {
+  .hu4-fila { grid-template-columns: 1fr auto; }
+  .hu4-fila > :nth-child(3) { justify-self: end; }
+  .hu4-fila__datos { grid-column: 1 / -1; grid-row: 2; }
+  .hu4-fila__acciones { grid-column: 1 / -1; justify-content: flex-start; }
+}
+@media (max-width: 600px) {
+  .hu4-fila__datos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
