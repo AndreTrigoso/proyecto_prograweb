@@ -1,13 +1,13 @@
 /*Hook personalizado que conecta las pantallas de HU-2 con la sesión, los datos compartidos y los servicios de almacenamiento.*/
 
 import { useEffect, useState } from "react";
-import { useAuth } from "../context/AuthContext";
-import { useData } from "../context/DataContext";
+import { useAuth } from "../../context/AuthContext";
+import { useData } from "../../context/DataContext";
 
 import {
   localesService,
   productosService
-} from "../services/storageService";
+} from "../../services/storageService";
 
 export function useHU2() {
   const { currentUser, currentRole } = useAuth();

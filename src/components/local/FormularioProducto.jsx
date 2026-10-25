@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useHU2 } from "./useHU2";
-import { productosService } from "../services/storageService";
+import { productosService } from "../../services/storageService";
 import "./styles/FormularioProducto.css";
 
 const MAX_IMAGEN = 250 * 1024;
