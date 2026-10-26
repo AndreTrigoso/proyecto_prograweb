@@ -323,7 +323,7 @@ export default function HorarioLocal() {
           </table>
         </div>
 
-        {Object.keys(errores).length > 0 && (
+        {Object.keys(errores).some(Boolean) && (
           <div className="hu2-horario-errores">
             {DIAS.filter(dia => errores[dia.id]).map(dia => (
               <p key={dia.id}>
