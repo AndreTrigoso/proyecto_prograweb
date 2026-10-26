@@ -3,15 +3,14 @@ import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import { useData } from '../../context/DataContext';
 import { localesService, usuariosService } from '../../services/storageService';
-import { ShoppingBag, LogOut, ChevronDown, Store, RotateCcw, User } from 'lucide-react';
+import { ShoppingBag, LogOut, ChevronDown, Store, User } from 'lucide-react';
 
 export function Header({ onOpenAuthModal, activeTab, setActiveTab, onShowNotification, onOpenAccount }) {
-  const { currentUser, currentRole, logout, switchRole } = useAuth();
+  const { currentUser, currentRole, logout } = useAuth();
   const { totalItemsCount, setIsDrawerOpen, activeLocal } = useCart();
-  const { locales, resetToSeeds } = useData();
+  const { locales } = useData();
 
   const [userMenuOpen, setUserMenuOpen] = useState(false);
-  const [roleSwitcherOpen, setRoleSwitcherOpen] = useState(false);
   const [localSelectorOpen, setLocalSelectorOpen] = useState(false);
   const [estadoDropdownOpen, setEstadoDropdownOpen] = useState(false);
 
@@ -197,115 +196,6 @@ export function Header({ onOpenAuthModal, activeTab, setActiveTab, onShowNotific
               )}
             </div>
           )}
-
-          {/* Selector rápido de Rol para pruebas del equipo/docente */}
-          <div style={{ position: 'relative' }}>
-            <button
-              type="button"
-              onClick={() => setRoleSwitcherOpen(!roleSwitcherOpen)}
-              style={{
-                background: isDarkMode ? 'rgba(255,255,255,0.08)' : '#F7F2EE',
-                color: isDarkMode ? '#D4C5BF' : 'var(--color-text-muted)',
-                border: isDarkMode ? '1px solid #44322B' : '1px solid var(--color-border)',
-                borderRadius: '999px',
-                padding: '3px 10px',
-                fontSize: '11px',
-                fontWeight: '600',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '4px'
-              }}
-              title="Cambiar vista de rol o reiniciar datos semilla"
-            >
-              <span>Vista: {currentRole}</span>
-              <ChevronDown size={11} />
-            </button>
-
-            {roleSwitcherOpen && (
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '115%',
-                  left: 0,
-                  backgroundColor: 'var(--color-surface)',
-                  color: 'var(--color-text)',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: 'var(--radius-md)',
-                  boxShadow: 'var(--shadow-warm-lg)',
-                  padding: '8px',
-                  minWidth: '240px',
-                  zIndex: 600
-                }}
-              >
-                <div style={{ padding: '4px 8px', fontSize: '11px', color: 'var(--color-text-muted)', fontWeight: '600' }}>
-                  ALTERNAR ROL DEL SISTEMA:
-                </div>
-                {[
-                  { role: 'local', label: 'Local · HU-5 Bandeja (Cafetería Central)' },
-                  { role: 'comensal', label: 'Comensal (Mateo Rojas)' },
-                  { role: 'visitante', label: 'Visitante (Público)' },
-                  { role: 'administrador', label: 'Administrador (Ana García)' }
-                ].map(r => (
-                  <button
-                    key={r.role}
-                    type="button"
-                    onClick={() => {
-                      switchRole(r.role);
-                      setRoleSwitcherOpen(false);
-                    }}
-                    style={{
-                      width: '100%',
-                      textAlign: 'left',
-                      padding: '8px 10px',
-                      background: currentRole === r.role ? 'var(--color-primary-soft)' : 'none',
-                      color: currentRole === r.role ? 'var(--color-primary)' : 'inherit',
-                      border: 'none',
-                      borderRadius: 'var(--radius-sm)',
-                      fontSize: '13px',
-                      cursor: 'pointer',
-                      fontWeight: currentRole === r.role ? '600' : '400',
-                      display: 'block'
-                    }}
-                  >
-                    {r.label}
-                  </button>
-                ))}
-                <div style={{ borderTop: '1px solid var(--color-border)', marginTop: '6px', paddingTop: '6px' }}>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      resetToSeeds();
-                      setRoleSwitcherOpen(false);
-                      if (onShowNotification) {
-                        onShowNotification({
-                          type: 'info',
-                          title: 'Datos semilla restaurados',
-                          message: 'Se han restaurado todos los pedidos iniciales del día.'
-                        });
-                      }
-                    }}
-                    style={{
-                      width: '100%',
-                      textAlign: 'left',
-                      padding: '7px 10px',
-                      background: 'none',
-                      border: 'none',
-                      color: 'var(--color-text-muted)',
-                      fontSize: '12px',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '6px'
-                    }}
-                  >
-                    <RotateCcw size={13} />
-                    Restaurar datos semilla iniciales
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
         </div>
 
         {/* Centro (para Visitante / Comensal) */}

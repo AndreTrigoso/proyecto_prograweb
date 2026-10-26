@@ -4,7 +4,7 @@ import { useData } from '../../../context/DataContext';
 import { pedidosService } from '../../../services/storageService';
 import { ConfirmModal, StatusBadge } from '../../common';
 import { RechazarPedidoModal } from '../RechazarPedidoModal/RechazarPedidoModal';
-import { Search, ChevronDown, Calendar, EyeOff, Eye } from 'lucide-react';
+import { ChevronDown, Calendar } from 'lucide-react';
 import './BandejaDiaView.css';
 
 /**
@@ -12,9 +12,8 @@ import './BandejaDiaView.css';
  * Fiel al Mockup 5.1 y especificaciones de HU-5:
  * - Columnas por estado (Recibidos, En preparación, Listos, Entregados) y agrupación por hora de recojo.
  * - Alerta de pedidos próximos a vencer (en 6 min) y bloque de Pedidos Vencidos (>15 min).
- * - Búsqueda por código o comensal.
  * - Transiciones de estado directas y rechazo con motivo obligatorio.
- * - Pieza suelta de bandeja vacía ("Sin pedidos por ahora").
+ * - Estado de bandeja vacía ("Sin pedidos por ahora").
  */
 export function BandejaDiaView({
   onSelectPedido,
@@ -27,8 +26,6 @@ export function BandejaDiaView({
 
   const [agruparPor, setAgruparPor] = useState('estado'); // 'estado' | 'hora'
   const [groupMenuOpen, setGroupMenuOpen] = useState(false);
-  const [busqueda, setBusqueda] = useState('');
-  const [simularVacio, setSimularVacio] = useState(false);
 
   // Modal de rechazo (5.3)
   const [pedidoARechazar, setPedidoARechazar] = useState(null);
@@ -40,32 +37,22 @@ export function BandejaDiaView({
   // Todos los pedidos del local actual
   const todosPedidosLocal = pedidos.filter(p => p.localId === activeLocalId);
 
-  // Filtrado por búsqueda (código o comensal)
-  const pedidosFiltrados = todosPedidosLocal.filter(p => {
-    if (!busqueda.trim()) return true;
-    const q = busqueda.trim().toLowerCase();
-    return (
-      p.codigoPedido.toLowerCase().includes(q) ||
-      p.comensalNombre.toLowerCase().includes(q)
-    );
-  });
-
   // Separar pedidos vencidos (>15 min) de las columnas activas
-  const pedidosVencidos = pedidosFiltrados.filter(p => p.vencido && p.estado === 'listo');
+  const pedidosVencidos = todosPedidosLocal.filter(p => p.vencido && p.estado === 'listo');
 
-  const recibidos = pedidosFiltrados
+  const recibidos = todosPedidosLocal
     .filter(p => p.estado === 'recibido' && !p.vencido)
     .sort((a, b) => a.horaRecojo.localeCompare(b.horaRecojo));
 
-  const enPreparacion = pedidosFiltrados
+  const enPreparacion = todosPedidosLocal
     .filter(p => p.estado === 'en_preparacion' && !p.vencido)
     .sort((a, b) => (a.minutosRestantes || 99) - (b.minutosRestantes || 99));
 
-  const listos = pedidosFiltrados
+  const listos = todosPedidosLocal
     .filter(p => p.estado === 'listo' && !p.vencido)
     .sort((a, b) => a.horaRecojo.localeCompare(b.horaRecojo));
 
-  const entregados = pedidosFiltrados
+  const entregados = todosPedidosLocal
     .filter(p => p.estado === 'entregado')
     .sort((a, b) => (b.horaEntrega || '').localeCompare(a.horaEntrega || ''));
 
@@ -150,7 +137,7 @@ export function BandejaDiaView({
     )
   ).sort();
 
-  const mostrarEstadoVacio = simularVacio || (
+  const mostrarEstadoVacio = (
     recibidos.length === 0 &&
     enPreparacion.length === 0 &&
     listos.length === 0 &&
@@ -174,31 +161,8 @@ export function BandejaDiaView({
           </p>
         </div>
 
-        {/* Controles superiores: Buscador, Agrupar por y Entregar contra código */}
+        {/* Controles superiores: Agrupar por y Entregar contra código */}
         <div className="bandeja-controls">
-          {/* Buscador por código o comensal */}
-          <div className="bandeja-search-wrapper">
-            <Search size={15} className="bandeja-search-icon" />
-            <input
-              type="text"
-              value={busqueda}
-              onChange={(e) => setBusqueda(e.target.value)}
-              placeholder="Buscar código o comensal..."
-              className="bandeja-search-input"
-            />
-          </div>
-
-          {/* Botón para alternar demostración de bandeja vacía (Pieza suelta) */}
-          <button
-            type="button"
-            onClick={() => setSimularVacio(!simularVacio)}
-            className={`bandeja-btn-simulate-empty ${simularVacio ? 'is-active' : ''}`}
-            title="Alternar vista de bandeja vacía (Pieza suelta del mockup)"
-          >
-            {simularVacio ? <Eye size={14} /> : <EyeOff size={14} />}
-            <span>{simularVacio ? 'Ver pedidos activos' : 'Simular bandeja vacía'}</span>
-          </button>
-
           {/* Selector Agrupar por: estado / hora de recojo */}
           <div className="bandeja-dropdown-wrapper">
             <button
@@ -243,7 +207,7 @@ export function BandejaDiaView({
         </div>
       </div>
 
-      {/* PIEZA SUELTA: SIN PEDIDOS POR AHORA */}
+      {/* ESTADO VACÍO: SIN PEDIDOS POR AHORA */}
       {mostrarEstadoVacio ? (
         <div className="bandeja-empty-card">
           <div className="bandeja-empty-icon">
@@ -259,7 +223,6 @@ export function BandejaDiaView({
           <button
             type="button"
             onClick={() => {
-              if (simularVacio) setSimularVacio(false);
               if (onNavigateMiCarta) onNavigateMiCarta();
             }}
             className="bandeja-btn-revisar-carta"

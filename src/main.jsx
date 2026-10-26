@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './styles/global.css';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
-import { useToast } from './context/ToastContext';
-import { PrerequisitesShowcase } from './components/dev/PrerequisitesShowcase';
 import RutaProtegida from './components/auth/RutaProtegida/RutaProtegida.jsx';
 import SoloVisitantes from './components/auth/SoloVisitantes/SoloVisitantes.jsx';
 import PaginaInicio from './pages/PaginaInicio.jsx';
@@ -43,16 +41,6 @@ const proximamente = (path, titulo, historia) => ({
   element: <PaginaProximamente titulo={titulo} historia={historia} />
 });
 
-// Catálogo de componentes comunes (apoyo del equipo), ahora accesible por ruta.
-const Prerrequisitos = () => {
-  const { notify } = useToast();
-  return (
-    <div className="contenedor">
-      <PrerequisitesShowcase onShowNotification={notify} />
-    </div>
-  );
-};
-
 const router = createBrowserRouter([
   {
     // App dibuja la cabecera, la navegación y el pie según el rol; las pantallas cuelgan de su <Outlet />
@@ -77,7 +65,6 @@ const router = createBrowserRouter([
       { path: 'locales', element: <PaginaLocales /> },
       { path: 'locales/:localId', element: <PaginaCartaLocal /> },
       { path: 'locales/:localId/productos/:productoId', element: <PaginaDetalleProducto /> },
-      { path: 'prerrequisitos', element: <Prerrequisitos /> },
 
       // Cualquier rol autenticado
       {

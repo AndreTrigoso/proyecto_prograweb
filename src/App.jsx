@@ -25,7 +25,7 @@ const pestanaDeRuta = (pathname) =>
 
 // Las secciones del Sidebar de administrador llevan el prefijo "admin-" (ej. admin-tablero -> /admin/tablero).
 const rutaDeSeccion = (role, id) =>
-  id === 'prerrequisitos' ? '/prerrequisitos' : role === 'administrador' ? `/admin/${id.replace('admin-', '')}` : `/local/${id}`;
+  role === 'administrador' ? `/admin/${id.replace('admin-', '')}` : `/local/${id}`;
 
 const seccionDeRuta = (pathname) => {
   const [, zona, seccion] = pathname.split('/');

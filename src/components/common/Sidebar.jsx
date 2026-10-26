@@ -183,28 +183,6 @@ export function Sidebar({ currentSection, onSectionChange }) {
           </div>
         </div>
       ))}
-
-      {/* Acceso al catálogo de componentes comunes / prerrequisitos */}
-      <div style={{ marginTop: 'auto', paddingTop: '12px', borderTop: '1px solid var(--color-border)' }}>
-        <button
-          type="button"
-          onClick={() => onSectionChange('prerrequisitos')}
-          style={{
-            width: '100%',
-            padding: '8px 12px',
-            borderRadius: '8px',
-            border: '1px dashed var(--color-border)',
-            backgroundColor: currentSection === 'prerrequisitos' ? 'var(--color-primary-soft)' : 'transparent',
-            color: currentSection === 'prerrequisitos' ? 'var(--color-primary)' : 'var(--color-text-muted)',
-            fontSize: '12px',
-            fontWeight: '500',
-            textAlign: 'left',
-            cursor: 'pointer'
-          }}
-        >
-          ⚙️ Ver Prerrequisitos Base
-        </button>
-      </div>
     </aside>
   );
 }

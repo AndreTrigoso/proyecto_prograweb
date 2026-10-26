@@ -47,11 +47,6 @@ export function EntregaCodigoView({ onSelectPedido, onShowNotification }) {
     setCodigoBuscado(formatted);
   };
 
-  const handleQuickCode = (code) => {
-    setCodigoInput(code);
-    setCodigoBuscado(code);
-  };
-
   const handleConfirmarEntrega = () => {
     if (!pedidoEncontrado) return;
     const actualizado = pedidosService.entregar(pedidoEncontrado.id);
@@ -111,25 +106,6 @@ export function EntregaCodigoView({ onSelectPedido, onShowNotification }) {
             </button>
           </div>
         </form>
-
-        {/* Botones de prueba rápida para evaluar los 3 estados del Mockup 5.4 */}
-        <div className="entrega-codigo__quick-cases">
-          <span>Probar casos del mockup:</span>
-          {[
-            { code: 'PED-4835', label: 'PED-4835 (Listo)' },
-            { code: 'PED-4805', label: 'PED-4805 (Ya entregado)' },
-            { code: 'PED-9999', label: 'PED-9999 (No encontrado)' }
-          ].map(item => (
-            <button
-              key={item.code}
-              type="button"
-              onClick={() => handleQuickCode(item.code)}
-              className={`entrega-codigo__quick-btn ${codigoBuscado === item.code ? 'entrega-codigo__quick-btn--active' : ''}`}
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
 
         {/* CASO 1: CÓDIGO VÁLIDO LISTO PARA ENTREGAR */}
         {pedidoParaEntregar && (
