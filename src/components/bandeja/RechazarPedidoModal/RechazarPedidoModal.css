@@ -1,0 +1,146 @@
+/* 5.3 Modal de rechazo · Motivo obligatorio */
+.rechazar-modal-content {
+  max-width: 480px;
+  padding: 28px;
+  border-radius: 18px;
+  border: 1px solid var(--color-border);
+}
+
+.rechazar-modal-title {
+  font-family: var(--font-family-title);
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 6px;
+}
+
+.rechazar-modal-subtitle {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+}
+
+.rechazar-modal-section {
+  margin-bottom: 20px;
+}
+
+.rechazar-modal-section-detail {
+  margin-bottom: 22px;
+}
+
+.rechazar-modal-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.rechazar-modal-radio-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rechazar-modal-radio-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text);
+}
+
+.rechazar-modal-radio-item.is-selected {
+  font-weight: 600;
+}
+
+.rechazar-modal-radio-circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid #D5C5BC;
+  background-color: #FFFFFF;
+  display: inline-block;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.rechazar-modal-radio-item.is-selected .rechazar-modal-radio-circle {
+  border: 5px solid var(--color-primary);
+}
+
+.rechazar-modal-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-text);
+  background-color: #FFFFFF;
+  resize: none;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.rechazar-modal-textarea:focus {
+  border-color: var(--color-primary);
+}
+
+.rechazar-modal-textarea.has-error {
+  border: 1.5px solid var(--color-danger);
+}
+
+.rechazar-modal-helper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.rechazar-modal-helper.has-error {
+  color: var(--color-danger);
+}
+
+.rechazar-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.rechazar-btn-volver {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background-color: #FFFFFF;
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.rechazar-btn-volver:hover {
+  background-color: #FAF5F1;
+}
+
+.rechazar-btn-confirmar {
+  padding: 10px 22px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--color-danger);
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.rechazar-btn-confirmar:hover {
+  background-color: #9B1C1C;
+}

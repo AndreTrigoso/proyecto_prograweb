@@ -17,6 +17,9 @@ import PaginaMiCuenta from './pages/PaginaMiCuenta.jsx';
 import PaginaAccesoDenegado from './pages/PaginaAccesoDenegado.jsx';
 import PaginaNoEncontrada from './pages/PaginaNoEncontrada.jsx';
 import PaginaProximamente from './pages/PaginaProximamente.jsx';
+import PaginaBandejaDia from './pages/PaginaBandejaDia.jsx';
+import PaginaEntregaCodigo from './pages/PaginaEntregaCodigo.jsx';
+import PaginaResumenDia from './pages/PaginaResumenDia.jsx';
 import PaginaMiCarta from './pages/PaginaMiCarta.jsx';
 import PaginaOpcionesLocal from './pages/PaginaOpcionesLocal.jsx';
 import PaginaDisponibilidadLocal from './pages/PaginaDisponibilidadLocal.jsx';
@@ -100,9 +103,9 @@ const router = createBrowserRouter([
         element: <RutaProtegida roles={['local']} />,
         children: [
           { path: 'local', element: <Navigate to="/local/bandeja" replace /> },
-          proximamente('local/bandeja', 'Bandeja del día', 'HU-5 (Bandeja del local)'),
-          proximamente('local/entrega', 'Entrega contra código', 'HU-5 (Bandeja del local)'),
-          proximamente('local/resumen', 'Resumen del día', 'HU-5 (Bandeja del local)'),
+          { path: 'local/bandeja', element: <PaginaBandejaDia /> },
+          { path: 'local/entrega', element: <PaginaEntregaCodigo /> },
+          { path: 'local/resumen', element: <PaginaResumenDia /> },
           { path: 'local/mi-carta', element: <PaginaMiCarta /> },
           { path: 'local/opciones', element: <PaginaOpcionesLocal /> },
           { path: 'local/agotados', element: <PaginaDisponibilidadLocal /> },
